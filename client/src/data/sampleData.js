@@ -274,3 +274,7 @@ export const sampleOrders = [
     status: 'Pending'
   }
 ];
+
+export const sampleCustomRequests = [{ id: 'req1', title: 'Custom Portrait', artist_name: 'Elena Rostova', budget: 5000, date: '2023-11-01T10:00:00Z', status: 'Pending' }];
+
+export const sampleConversations = [{ id: 'conv1', with_user: 'John Doe', last_message: 'Hi, is this still available?', date: '2023-11-01T12:00:00Z', unread: true }];
