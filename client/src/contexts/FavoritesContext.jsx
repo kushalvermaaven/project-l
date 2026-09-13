@@ -9,10 +9,10 @@ export const FavoritesProvider = ({ children }) => {
     setFavorites(prev => prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id]);
   };
   
-  const isFavorited = (id) => favorites.includes(id);
+  const isFavorite = (id) => favorites.includes(id);
 
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorited }}>
+    <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite }}>
       {children}
     </FavoritesContext.Provider>
   );

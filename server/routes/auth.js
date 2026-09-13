@@ -13,17 +13,17 @@ router.post('/register', async (req, res) => {
   const db = getDb();
 
   try {
-    const userExists = db.prepare('SELECT id FROM users WHERE email = ?').get(email);
+    const userExists = await db.prepare('SELECT id FROM users WHERE email = ?').get(email);
     if (userExists) return res.status(400).json({ message: 'Email already exists' });
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const userId = uuidv4();
 
     db.transaction(() => {
-      db.prepare('INSERT INTO users (id, email, password, name, role) VALUES (?, ?, ?, ?, ?)').run(userId, email, hashedPassword, name, role);
+      await db.prepare('INSERT INTO users (id, email, password, name, role) VALUES (?, ?, ?, ?, ?)').run(userId, email, hashedPassword, name, role);
 
       if (role === 'artist') {
-        db.prepare('INSERT INTO artist_profiles (id, user_id) VALUES (?, ?)').run(uuidv4(), userId);
+        await db.prepare('INSERT INTO artist_profiles (id, user_id) VALUES (?, ?)').run(uuidv4(), userId);
       }
     })();
 
@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
   const db = getDb();
 
   try {
-    const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
+    const user = await db.prepare('SELECT * FROM users WHERE email = ?').get(email);
     if (!user) return res.status(401).json({ message: 'Invalid credentials' });
 
     const valid = await bcrypt.compare(password, user.password);
@@ -53,14 +53,14 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/forgot-password', (req, res) => {
+router.post('/forgot-password', async (req, res) => {
   res.json({ message: 'Password reset link sent to your email.' });
 });
 
-router.get('/me', verifyToken, (req, res) => {
+router.get('/me', verifyToken, async (req, res) => {
   const db = getDb();
   try {
-    const user = db.prepare('SELECT id, email, name, role, avatar, bio, location, phone, created_at FROM users WHERE id = ?').get(req.user.id);
+    const user = await db.prepare('SELECT id, email, name, role, avatar, bio, location, phone, created_at FROM users WHERE id = ?').get(req.user.id);
     if (!user) return res.status(404).json({ message: 'User not found' });
     res.json(user);
   } catch (error) {

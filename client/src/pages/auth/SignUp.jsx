@@ -1,12 +1,15 @@
 import React, { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Mail, Lock, User, Palette, Heart, Chrome } from 'lucide-react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ToastContext } from '../../contexts/ToastContext';
 
 export default function SignUp() {
-  const [step, setStep] = useState(1);
-  const [role, setRole] = useState(null); // 'artist' or 'buyer'
+  const [searchParams] = useSearchParams();
+  const initialRole = searchParams.get('role'); // e.g. 'artist' or 'buyer'
+
+  const [step, setStep] = useState(initialRole ? 2 : 1);
+  const [role, setRole] = useState(initialRole || null); // 'artist' or 'buyer'
   
   // Form State
   const [name, setName] = useState('');

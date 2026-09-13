@@ -5,22 +5,22 @@ import { verifyToken, requireRole } from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   const db = getDb();
   try {
-    const categories = db.prepare('SELECT * FROM categories').all();
+    const categories = await db.prepare('SELECT * FROM categories').all();
     res.json(categories);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-router.post('/', verifyToken, requireRole('admin'), (req, res) => {
+router.post('/', verifyToken, requireRole('admin'), async (req, res) => {
   const db = getDb();
   const { name, slug, image, description } = req.body;
   try {
     const id = uuidv4();
-    db.prepare('INSERT INTO categories (id, name, slug, image, description) VALUES (?, ?, ?, ?, ?)')
+    await db.prepare('INSERT INTO categories (id, name, slug, image, description) VALUES (?, ?, ?, ?, ?)')
       .run(id, name, slug, image, description);
     res.status(201).json({ id, message: 'Category created' });
   } catch (error) {
