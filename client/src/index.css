@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+  .glass-card {
+    @apply bg-[#1a1a2e]/80 backdrop-blur-xl border border-white/5;
+  }
+  .glass-dark {
+    @apply bg-[#13131a]/90 backdrop-blur-2xl border border-white/10;
+  }
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-cyan-500;
+  }
+  .neon-glow {
+    @apply shadow-[0_0_15px_rgba(124,58,237,0.5)];
+  }
+  .neon-border {
+    @apply border-transparent bg-clip-border;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f; 
+}
+::-webkit-scrollbar-thumb {
+  background: #252540; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed; 
+}
+
+/* Base Styles */
+body {
+  overflow-x: hidden;
+}
+
+/* Smooth transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: scale(0.98);
+}
+.page-transition-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Image Zoom */
+.img-zoom-container {
+  overflow: hidden;
+}
+.img-zoom-container img {
+  transition: transform 0.5s ease;
+}
+.img-zoom-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Focus Ring */
+*:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+/* Skeleton animation */
+.skeleton {
+  @apply bg-gradient-to-r from-[#1a1a2e] via-[#252540] to-[#1a1a2e] bg-[length:400%_100%] animate-shimmer;
+}
