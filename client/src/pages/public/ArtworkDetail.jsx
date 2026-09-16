@@ -9,6 +9,7 @@ import ArtworkGrid from '../../components/artwork/ArtworkGrid';
 import { sampleArtworks, sampleArtists } from '../../data/sampleData';
 import { formatPrice } from '../../utils/helpers';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { FloatingDoodles, Mouse3DWrapper } from '../../components/ui/DoodleAnimations';
 
 const ArtworkDetail = () => {
   const { id } = useParams();
@@ -43,6 +44,7 @@ const ArtworkDetail = () => {
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-[#f0f0f5] py-24 px-6 relative overflow-hidden">
+      <FloatingDoodles />
       {/* Background decorations */}
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
       <div className="absolute top-20 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
@@ -56,8 +58,8 @@ const ArtworkDetail = () => {
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Image */}
           <div className="lg:w-[60%] reveal-left">
-            <div className="rounded-3xl overflow-hidden glass-card aspect-square relative group p-2 shadow-2xl">
-              <div className="w-full h-full rounded-2xl overflow-hidden relative">
+            <Mouse3DWrapper className="rounded-3xl overflow-hidden glass-card aspect-square relative group p-2 shadow-2xl">
+              <div className="w-full h-full rounded-2xl overflow-hidden relative" style={{ transform: 'translateZ(30px)' }}>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-500" />
                 <img 
                   src={artwork.image} 
@@ -65,7 +67,7 @@ const ArtworkDetail = () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-            </div>
+            </Mouse3DWrapper>
           </div>
 
           {/* Info Card */}

@@ -3,6 +3,7 @@ import ArtworkCard from './ArtworkCard';
 import Skeleton from '../ui/Skeleton';
 import EmptyState from '../ui/EmptyState';
 import { ImageOff } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const ArtworkGrid = ({ artworks = [], loading = false, emptyMessage = "No artworks found", emptyIcon = ImageOff, columns }) => {
   if (loading) {
@@ -22,9 +23,16 @@ const ArtworkGrid = ({ artworks = [], loading = false, emptyMessage = "No artwor
   return (
     <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6`}>
       {artworks.map((artwork, index) => (
-        <div key={artwork.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both" style={{ animationDelay: `${index * 50}ms` }}>
+        <motion.div 
+          key={artwork.id}
+          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: index * 0.1, type: "spring", bounce: 0.4 }}
+          whileHover={{ y: -10 }}
+        >
           <ArtworkCard artwork={artwork} />
-        </div>
+        </motion.div>
       ))}
     </div>
   );

@@ -9,7 +9,8 @@ import ArtworkGrid from '../../components/artwork/ArtworkGrid';
 import ArtistCard from '../../components/artist/ArtistCard';
 import { sampleArtworks, sampleArtists, sampleCategories } from '../../data/sampleData';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-
+import { FloatingDoodles, ParallaxSection } from '../../components/ui/DoodleAnimations';
+import { motion, useScroll, useTransform } from 'framer-motion';
 /* ── ticker content ──────────────────────────────────── */
 const tickerItems = [
   '✦ Digital Art', '✦ Oil Painting', '✦ Photography',
@@ -62,17 +63,21 @@ const catIcons = [Palette, Zap, Star, Globe, Shield, Heart, Search, MessageCircl
 
 const Home = () => {
   useScrollReveal();
+  const { scrollYProgress } = useScroll();
+  const yHero = useTransform(scrollYProgress, [0, 0.2], [0, 150]);
+  const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-[#f0f0f5] overflow-hidden">
+    <div className="min-h-screen bg-[#0a0a0f] text-[#f0f0f5] overflow-hidden relative">
+      <FloatingDoodles />
 
       {/* ══════════════════════════════════════════
           HERO SECTION
       ══════════════════════════════════════════ */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 pb-12 overflow-hidden">
-
+        
         {/* Background grid */}
-        <div className="absolute inset-0 bg-grid opacity-40" />
+        <motion.div style={{ y: yHero, opacity: opacityHero }} className="absolute inset-0 bg-grid opacity-40" />
 
         {/* Aurora orbs */}
         <div className="absolute inset-0 z-0 pointer-events-none">
@@ -84,7 +89,7 @@ const Home = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full border border-white/[0.02] animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '35s' }} />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
+        <motion.div style={{ y: yHero, opacity: opacityHero }} className="relative z-10 max-w-5xl mx-auto text-center">
           {/* Pill badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-animate border mb-10 animate-slide-up">
             <Sparkles className="w-3.5 h-3.5 text-purple-400 animate-pulse" />
@@ -271,11 +276,20 @@ const Home = () => {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-          <div className="flex overflow-x-auto gap-5 pb-6 snap-x snap-mandatory hide-scrollbar reveal">
-            {sampleArtists.map((artist) => (
-              <div key={artist.id} className="min-w-[300px] snap-start">
+          <div className="flex overflow-x-auto gap-5 pb-6 snap-x snap-mandatory hide-scrollbar reveal pt-10">
+            {sampleArtists.map((artist, idx) => (
+              <motion.div 
+                key={artist.id} 
+                className="min-w-[300px] snap-start"
+                initial={{ opacity: 0, x: 100, rotateY: -20 }}
+                whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: idx * 0.15, type: "spring", bounce: 0.4 }}
+                whileHover={{ scale: 1.05, rotateY: 5, zIndex: 10 }}
+                style={{ perspective: 1000 }}
+              >
                 <ArtistCard artist={artist} />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -296,21 +310,28 @@ const Home = () => {
             <div className="relative z-10 flex flex-col lg:flex-row">
               {/* Left – visual */}
               <div className="lg:w-[45%] p-12 lg:p-16 flex items-center justify-center relative min-h-[280px]">
-                {/* Orbiting rings */}
-                <div className="relative w-48 h-48 flex items-center justify-center">
+                {/* Orbiting rings with Parallax */}
+                <motion.div 
+                  className="relative w-48 h-48 flex items-center justify-center"
+                  initial={{ rotateX: 30, rotateY: -30 }}
+                  whileInView={{ rotateX: 0, rotateY: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, type: 'spring' }}
+                  style={{ perspective: 800 }}
+                >
                   <div className="absolute w-48 h-48 rounded-full border border-purple-500/20 animate-spin-slow" />
-                  <div className="absolute w-36 h-36 rounded-full border border-cyan-500/20 animate-spin-slow" style={{ animationDuration: '12s', animationDirection: 'reverse' }} />
-                  <div className="absolute w-24 h-24 rounded-full border border-pink-500/20 animate-spin-slow" style={{ animationDuration: '8s' }} />
+                  <div className="absolute w-36 h-36 rounded-full border border-cyan-500/20 animate-spin-slow" style={{ animationDuration: '12s', animationDirection: 'reverse', transform: 'translateZ(20px)' }} />
+                  <div className="absolute w-24 h-24 rounded-full border border-pink-500/20 animate-spin-slow" style={{ animationDuration: '8s', transform: 'translateZ(40px)' }} />
 
                   {/* Ping circles */}
                   <div className="absolute w-48 h-48 rounded-full border border-purple-500/10 animate-ping-slow" style={{ animationDelay: '0s' }} />
                   <div className="absolute w-36 h-36 rounded-full border border-cyan-500/10 animate-ping-slow" style={{ animationDelay: '0.8s' }} />
 
                   {/* Center icon */}
-                  <div className="w-20 h-20 rounded-2xl glass-strong border border-purple-500/30 flex items-center justify-center neon-glow animate-float">
+                  <div className="w-20 h-20 rounded-2xl glass-strong border border-purple-500/30 flex items-center justify-center neon-glow animate-float" style={{ transform: 'translateZ(60px)' }}>
                     <Sparkles className="w-10 h-10 text-purple-400" />
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               {/* Right – copy */}
@@ -405,7 +426,7 @@ const Home = () => {
             <div className="absolute top-0 left-1/4 w-64 h-64 orb orb-purple opacity-40 animate-glow-pulse" style={{ filter: 'blur(50px)' }} />
             <div className="absolute bottom-0 right-1/4 w-64 h-64 orb orb-cyan opacity-30 animate-glow-pulse" style={{ animationDelay: '1s', filter: 'blur(50px)' }} />
 
-            <div className="relative z-10">
+            <ParallaxSection speed={0.4} className="relative z-10">
               <div className="section-label mb-6 justify-center">Join the Community</div>
               <h2 className="text-4xl md:text-6xl font-heading font-bold mb-5 leading-tight">
                 Your walls deserve<br />
@@ -428,7 +449,7 @@ const Home = () => {
                   </button>
                 </Link>
               </div>
-            </div>
+            </ParallaxSection>
           </div>
         </div>
       </section>

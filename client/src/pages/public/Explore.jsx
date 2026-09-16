@@ -3,6 +3,7 @@ import ArtworkFilters from '../../components/artwork/ArtworkFilters';
 import ArtworkGrid from '../../components/artwork/ArtworkGrid';
 import { sampleArtworks } from '../../data/sampleData';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { FloatingDoodles, ParallaxSection } from '../../components/ui/DoodleAnimations';
 
 const defaultFilters = {
   search: '',
@@ -71,13 +72,14 @@ const Explore = () => {
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-[#f0f0f5]">
+      <FloatingDoodles />
       {/* Hero header */}
       <div className="relative py-28 px-6 overflow-hidden border-b border-white/[0.06]">
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(ellipse, rgba(124,58,237,0.12) 0%, transparent 70%)', filter: 'blur(40px)' }} />
 
-        <div className="max-w-7xl mx-auto relative z-10 reveal">
+        <ParallaxSection speed={0.5} className="max-w-7xl mx-auto relative z-10 reveal">
           <div className="section-label mb-5">Marketplace</div>
           <h1 className="text-5xl md:text-6xl font-heading font-bold mb-3">
             Explore <span className="gradient-text">Art</span>
@@ -85,7 +87,7 @@ const Explore = () => {
           <p className="text-[#a0a0b8] text-lg">
             Showing <span className="text-white font-semibold">{filteredArtworks.length}</span> artworks
           </p>
-        </div>
+        </ParallaxSection>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-10">
