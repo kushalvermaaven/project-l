@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = 'artvrkz_secret_key_2024';
+const JWT_SECRET = process.env.JWT_SECRET || 'artvrkz_secret_key_2024';
 
 export const verifyToken = (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];

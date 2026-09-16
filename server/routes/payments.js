@@ -15,12 +15,10 @@ router.post('/checkout', verifyToken, async (req, res) => {
 
     const txId = await processPayment({ amount: order.total_price });
     
-    db.transaction(() => {
-      const paymentId = uuidv4();
+    const paymentId = uuidv4();
       await db.prepare('INSERT INTO payments (id, order_id, amount, status, method, transaction_id) VALUES (?, ?, ?, ?, ?, ?)')
         .run(paymentId, order_id, order.total_price, 'completed', method, txId);
       await db.prepare('UPDATE orders SET status = "paid", updated_at = CURRENT_TIMESTAMP WHERE id = ?').run(order_id);
-    })();
     
     res.json({ message: 'Payment successful', transaction_id: txId });
   } catch (error) {

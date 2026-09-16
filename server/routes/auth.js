@@ -6,7 +6,7 @@ import { getDb } from '../config/database.js';
 import { verifyToken } from '../middleware/auth.js';
 
 const router = express.Router();
-const JWT_SECRET = 'artvrkz_secret_key_2024';
+const JWT_SECRET = process.env.JWT_SECRET || 'artvrkz_secret_key_2024';
 
 router.post('/register', async (req, res) => {
   const { email, password, name, role = 'buyer' } = req.body;
@@ -19,13 +19,11 @@ router.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const userId = uuidv4();
 
-    db.transaction(() => {
-      await db.prepare('INSERT INTO users (id, email, password, name, role) VALUES (?, ?, ?, ?, ?)').run(userId, email, hashedPassword, name, role);
+    await db.prepare('INSERT INTO users (id, email, password, name, role) VALUES (?, ?, ?, ?, ?)').run(userId, email, hashedPassword, name, role);
 
       if (role === 'artist') {
         await db.prepare('INSERT INTO artist_profiles (id, user_id) VALUES (?, ?)').run(uuidv4(), userId);
       }
-    })();
 
     const token = jwt.sign({ id: userId, role }, JWT_SECRET, { expiresIn: '7d' });
     res.status(201).json({ token, user: { id: userId, email, name, role } });
