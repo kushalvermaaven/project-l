@@ -39,12 +39,12 @@ async function seed() {
   // ============ ARTISTS ============
   console.log('  Creating artists...');
   const artists = [
-    { id: uuidv4(), email: 'priya@artvrkz.com', name: 'Priya Sharma', bio: 'Digital artist specializing in vibrant illustrations and concept art. Inspired by Indian mythology and futuristic themes.', location: 'Mumbai, India', style: 'Digital Art', specialties: 'Illustrations, Concept Art, Character Design', followers: 1240, sales: 45, earnings: 185000, rating: 4.8, reviews: 23 },
-    { id: uuidv4(), email: 'arjun@artvrkz.com', name: 'Arjun Patel', bio: 'Contemporary abstract artist exploring the boundaries of color and form. Each piece tells a story of emotion and movement.', location: 'Bangalore, India', style: 'Abstract', specialties: 'Abstract Paintings, Contemporary, Mixed Media', followers: 890, sales: 32, earnings: 245000, rating: 4.6, reviews: 18 },
-    { id: uuidv4(), email: 'zara@artvrkz.com', name: 'Zara Khan', bio: 'Photographer and minimalist artist. I find beauty in simplicity and capture moments that speak volumes in silence.', location: 'Delhi, India', style: 'Photography', specialties: 'Photography, Minimalist, Black & White', followers: 2100, sales: 67, earnings: 312000, rating: 4.9, reviews: 35 },
-    { id: uuidv4(), email: 'rohan@artvrkz.com', name: 'Rohan Mehta', bio: 'Traditional artist preserving the rich heritage of Indian art forms. Specializing in miniature paintings and cultural motifs.', location: 'Jaipur, India', style: 'Traditional', specialties: 'Traditional Art, Miniature Paintings, Cultural', followers: 560, sales: 28, earnings: 156000, rating: 4.7, reviews: 14 },
-    { id: uuidv4(), email: 'aisha@artvrkz.com', name: 'Aisha Verma', bio: 'Portrait artist with a passion for capturing the human soul. Realistic and hyper-realistic portraits that bring faces to life.', location: 'Pune, India', style: 'Realism', specialties: 'Portraits, Realism, Oil Painting', followers: 750, sales: 38, earnings: 220000, rating: 4.8, reviews: 20 },
-    { id: uuidv4(), email: 'kian@artvrkz.com', name: 'Kian Desai', bio: 'Pop art and poster designer bringing vibrant energy to modern spaces. Bold colors, strong lines, and cultural references.', location: 'Ahmedabad, India', style: 'Pop Art', specialties: 'Posters, Pop Art, Graphic Design', followers: 1680, sales: 85, earnings: 178000, rating: 4.5, reviews: 42 }
+    { id: uuidv4(), email: 'priya@artvrkz.com', name: 'Priya Sharma', bio: 'Digital artist specializing in vibrant illustrations and concept art. Inspired by Indian mythology and futuristic themes.', location: 'Mumbai, India', style: 'Digital Art', specialties: 'Illustrations, Concept Art, Character Design', followers: 1240, sales: 45, earnings: 185000, rating: 0, reviews: 0 },
+    { id: uuidv4(), email: 'arjun@artvrkz.com', name: 'Arjun Patel', bio: 'Contemporary abstract artist exploring the boundaries of color and form. Each piece tells a story of emotion and movement.', location: 'Bangalore, India', style: 'Abstract', specialties: 'Abstract Paintings, Contemporary, Mixed Media', followers: 890, sales: 32, earnings: 245000, rating: 0, reviews: 0 },
+    { id: uuidv4(), email: 'zara@artvrkz.com', name: 'Zara Khan', bio: 'Photographer and minimalist artist. I find beauty in simplicity and capture moments that speak volumes in silence.', location: 'Delhi, India', style: 'Photography', specialties: 'Photography, Minimalist, Black & White', followers: 2100, sales: 67, earnings: 312000, rating: 0, reviews: 0 },
+    { id: uuidv4(), email: 'rohan@artvrkz.com', name: 'Rohan Mehta', bio: 'Traditional artist preserving the rich heritage of Indian art forms. Specializing in miniature paintings and cultural motifs.', location: 'Jaipur, India', style: 'Traditional', specialties: 'Traditional Art, Miniature Paintings, Cultural', followers: 560, sales: 28, earnings: 156000, rating: 0, reviews: 0 },
+    { id: uuidv4(), email: 'aisha@artvrkz.com', name: 'Aisha Verma', bio: 'Portrait artist with a passion for capturing the human soul. Realistic and hyper-realistic portraits that bring faces to life.', location: 'Pune, India', style: 'Realism', specialties: 'Portraits, Realism, Oil Painting', followers: 750, sales: 38, earnings: 220000, rating: 0, reviews: 0 },
+    { id: uuidv4(), email: 'kian@artvrkz.com', name: 'Kian Desai', bio: 'Pop art and poster designer bringing vibrant energy to modern spaces. Bold colors, strong lines, and cultural references.', location: 'Ahmedabad, India', style: 'Pop Art', specialties: 'Posters, Pop Art, Graphic Design', followers: 1680, sales: 85, earnings: 178000, rating: 0, reviews: 0 }
   ];
 
   artists.forEach(a => {
@@ -171,18 +171,7 @@ async function seed() {
   });
 
   // ============ REVIEWS ============
-  console.log('  Creating reviews...');
-  const reviews = [
-    { reviewerIdx: 0, artistIdx: 0, rating: 5, comment: 'Priya is an amazing artist! The digital painting exceeded my expectations. The colors are even more vibrant in person. Highly recommend!' },
-    { reviewerIdx: 1, artistIdx: 4, rating: 5, comment: 'Aisha captured every detail perfectly in the portrait. It was like looking at a photograph. My family loved it!' },
-    { reviewerIdx: 2, artistIdx: 1, rating: 4, comment: 'Beautiful abstract piece. Arjun was great to work with and very responsive. The only reason for 4 stars is shipping took a bit longer than expected.' },
-    { reviewerIdx: 0, artistIdx: 5, rating: 5, comment: 'The poster quality is fantastic! Kian is super talented and the design looks amazing in my room.' },
-    { reviewerIdx: 1, artistIdx: 2, rating: 5, comment: 'Zara\'s photography is breathtaking. The minimalist composition is perfect for our office space.' }
-  ];
-  reviews.forEach(r => {
-    db.prepare('INSERT INTO reviews (id, reviewer_id, artist_id, order_id, rating, comment) VALUES (?, ?, ?, ?, ?, ?)')
-      .run(uuidv4(), buyers[r.reviewerIdx].id, artists[r.artistIdx].id, orderIds[0], r.rating, r.comment);
-  });
+  // Reviews will be populated genuinely as users purchase and review artworks
 
   // ============ FAVORITES ============
   console.log('  Creating favorites...');
@@ -201,7 +190,7 @@ async function seed() {
     { userId: artists[0].id, type: 'new_order', title: 'New Order!', message: 'You received a new order for "Cosmic Dreams".' },
     { userId: artists[0].id, type: 'custom_request', title: 'Custom Request', message: 'Rahul Gupta sent you a custom art request.' },
     { userId: buyers[1].id, type: 'order_update', title: 'Order Shipped', message: 'Your order for "Soul Window" has been shipped!' },
-    { userId: artists[4].id, type: 'review', title: 'New Review', message: 'Sneha Reddy left you a 5-star review!' }
+    { userId: artists[4].id, type: 'system', title: 'Welcome to Artvrkz', message: 'Your artist profile has been published and is now live!' }
   ];
   notifications.forEach(n => {
     db.prepare('INSERT INTO notifications (id, user_id, type, title, message) VALUES (?, ?, ?, ?, ?)')
