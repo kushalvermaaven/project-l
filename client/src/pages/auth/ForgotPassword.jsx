@@ -18,14 +18,14 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0a0a0f] p-4 text-[#f0f0f5] relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)] p-4 text-[var(--text-primary)] relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/20 blur-[100px] rounded-full pointer-events-none"></div>
       
       <div className="w-full max-w-md p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl z-10">
         <div className="flex justify-center mb-8">
           <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 to-cyan-500 p-[2px]">
-            <div className="w-full h-full bg-[#13131a] rounded-full flex items-center justify-center">
-              <Lock className="w-8 h-8 text-[#f0f0f5]" />
+            <div className="w-full h-full bg-[var(--bg-secondary)] rounded-full flex items-center justify-center">
+              <Lock className="w-8 h-8 text-[var(--text-primary)]" />
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@ export default function ForgotPassword() {
           <>
             <div className="text-center mb-8">
               <h2 className="text-3xl font-heading font-bold mb-2">Forgot Password?</h2>
-              <p className="text-[#a0a0b8] text-sm">
+              <p className="text-[var(--text-muted)] text-sm">
                 Enter your email and we'll send you a link to reset your password.
               </p>
             </div>
@@ -47,7 +47,7 @@ export default function ForgotPassword() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
-                  className="w-full bg-[#13131a] border border-white/10 rounded-xl py-3 pl-10 pr-4 text-[#f0f0f5] focus:outline-none focus:border-purple-500"
+                  className="w-full bg-[var(--bg-secondary)] border border-white/10 rounded-xl py-3 pl-10 pr-4 text-[var(--text-primary)] focus:outline-none focus:border-purple-500"
                   required
                 />
               </div>
@@ -64,9 +64,9 @@ export default function ForgotPassword() {
         ) : (
           <div className="text-center py-4">
             <h2 className="text-2xl font-heading font-bold mb-4 text-cyan-400">Check your email!</h2>
-            <p className="text-[#a0a0b8] mb-8">
+            <p className="text-[var(--text-muted)] mb-8">
               We've sent a password reset link to <br/>
-              <span className="text-[#f0f0f5] font-medium">{email}</span>
+              <span className="text-[var(--text-primary)] font-medium">{email}</span>
             </p>
             <button
               onClick={() => setIsSent(false)}
@@ -78,7 +78,7 @@ export default function ForgotPassword() {
         )}
 
         <div className="mt-8 pt-6 border-t border-white/10 text-center">
-          <Link to="/login" className="inline-flex items-center gap-2 text-sm text-[#a0a0b8] hover:text-[#f0f0f5] transition-colors">
+          <Link to="/login" className="inline-flex items-center gap-2 text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
             <ArrowLeft className="w-4 h-4" />
             Back to login
           </Link>

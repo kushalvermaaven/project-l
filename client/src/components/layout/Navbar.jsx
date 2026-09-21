@@ -21,6 +21,8 @@ const Navbar = () => {
     { to: '/artists', label: 'Artists' },
     { to: '/custom-art', label: 'Custom Art' },
     { to: '/pricing', label: 'Pricing' },
+    { to: '/add-art', label: 'Add Art' },
+    { to: '/collector', label: 'Collector' },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -30,7 +32,7 @@ const Navbar = () => {
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-[#0a0a0f]/85 backdrop-blur-2xl border-b border-white/8 shadow-[0_4px_30px_rgba(0,0,0,0.4)]'
+            ? 'bg-[var(--bg-primary)]/85 backdrop-blur-2xl border-b border-white/8 shadow-[0_4px_30px_rgba(0,0,0,0.4)]'
             : 'bg-transparent border-b border-transparent'
         }`}
         style={{ height: '68px' }}
@@ -44,15 +46,7 @@ const Navbar = () => {
             to="/"
             className="flex items-center gap-2 group"
           >
-            <div className="relative">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center shadow-neon-purple group-hover:shadow-neon-cyan transition-all duration-500">
-                <Sparkles className="w-4 h-4 text-white" />
-              </div>
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-purple-600 to-cyan-500 blur-md opacity-40 group-hover:opacity-70 transition-opacity duration-500" />
-            </div>
-            <span className="text-xl font-heading font-bold gradient-text tracking-tight animate-flicker">
-              ARTVRKZ
-            </span>
+            <img src="/logo.jpg" alt="Artvrkz Logo" className="h-12 w-auto object-contain rounded-md" />
           </Link>
 
           {/* Desktop Nav Links */}
@@ -64,7 +58,7 @@ const Navbar = () => {
                 className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover-underline ${
                   isActive(link.to)
                     ? 'text-purple-400'
-                    : 'text-[#a0a0b8] hover:text-[#f0f0f5]'
+                    : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 {isActive(link.to) && (
@@ -79,7 +73,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-3">
             <Link
               to="/login"
-              className="px-4 py-2 text-sm font-medium text-[#a0a0b8] hover:text-white rounded-lg hover:bg-white/5 transition-all duration-300"
+              className="px-4 py-2 text-sm font-medium text-[var(--text-muted)] hover:text-white rounded-lg hover:bg-white/5 transition-all duration-300"
             >
               Login
             </Link>
@@ -95,7 +89,7 @@ const Navbar = () => {
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden p-2 rounded-lg text-[#a0a0b8] hover:text-white hover:bg-white/5 transition-all"
+            className="md:hidden p-2 rounded-lg text-[var(--text-muted)] hover:text-white hover:bg-white/5 transition-all"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
           >
@@ -129,7 +123,7 @@ const Navbar = () => {
                 className={`px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                   isActive(link.to)
                     ? 'bg-purple-500/15 text-purple-400 border border-purple-500/20'
-                    : 'text-[#a0a0b8] hover:text-white hover:bg-white/5'
+                    : 'text-[var(--text-muted)] hover:text-white hover:bg-white/5'
                 }`}
               >
                 {link.label}
@@ -138,7 +132,7 @@ const Navbar = () => {
             <div className="border-t border-white/10 mt-3 pt-3 flex flex-col gap-2">
               <Link
                 to="/login"
-                className="px-4 py-3 rounded-xl text-sm font-medium text-[#a0a0b8] hover:text-white hover:bg-white/5 transition-all"
+                className="px-4 py-3 rounded-xl text-sm font-medium text-[var(--text-muted)] hover:text-white hover:bg-white/5 transition-all"
               >
                 Login
               </Link>

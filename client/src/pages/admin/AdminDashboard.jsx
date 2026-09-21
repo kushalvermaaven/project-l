@@ -57,7 +57,7 @@ const AdminDashboard = () => {
                 <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
                 <XAxis dataKey="name" stroke="#6b6b80" />
                 <YAxis stroke="#6b6b80" />
-                <Tooltip contentStyle={{ backgroundColor: '#13131a', borderColor: '#ffffff10' }} />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: '#ffffff10' }} />
                 <Line type="monotone" dataKey="sales" stroke="#8b5cf6" strokeWidth={3} dot={{ fill: '#8b5cf6', strokeWidth: 2 }} />
               </LineChart>
             </ResponsiveContainer>
@@ -72,8 +72,8 @@ const AdminDashboard = () => {
                 <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
                 <XAxis dataKey="name" stroke="#6b6b80" />
                 <YAxis stroke="#6b6b80" />
-                <Tooltip contentStyle={{ backgroundColor: '#13131a', borderColor: '#ffffff10' }} cursor={{ fill: '#ffffff05' }} />
-                <Bar dataKey="buyers" fill="#06b6d4" radius={[4, 4, 0, 0]} />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: '#ffffff10' }} cursor={{ fill: '#ffffff05' }} />
+                <Bar dataKey="buyers" fill="var(--accent-cyan)" radius={[4, 4, 0, 0]} />
                 <Bar dataKey="artists" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>

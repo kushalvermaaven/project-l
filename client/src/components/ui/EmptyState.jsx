@@ -16,9 +16,9 @@ const EmptyState = ({
           <Icon className="w-10 h-10 text-[#6b6b80]" />
         </div>
       )}
-      <h3 className="text-xl font-heading font-semibold text-[#f0f0f5]">{title}</h3>
+      <h3 className="text-xl font-heading font-semibold text-[var(--text-primary)]">{title}</h3>
       {description && (
-        <p className="text-[#a0a0b8] mt-2 max-w-md mx-auto">{description}</p>
+        <p className="text-[var(--text-muted)] mt-2 max-w-md mx-auto">{description}</p>
       )}
       {actionLabel && onAction && (
         <div className="mt-6">

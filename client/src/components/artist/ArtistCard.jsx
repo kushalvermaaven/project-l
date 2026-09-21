@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, Images, Users, ArrowRight } from 'lucide-react';
+import { Images, Users, ArrowRight } from 'lucide-react';
 
 const ArtistCard = ({ artist }) => {
   if (!artist) return null;
@@ -28,18 +28,10 @@ const ArtistCard = ({ artist }) => {
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
         </div>
-
-        {/* Rating badge */}
-        {artist.rating && (
-          <div className="absolute -bottom-1 -right-1 flex items-center gap-0.5 px-1.5 py-0.5 rounded-lg glass border border-yellow-500/30 text-yellow-400 text-[10px] font-bold">
-            <Star className="w-2.5 h-2.5 fill-yellow-400" />
-            {artist.rating}
-          </div>
-        )}
       </div>
 
       {/* Name + style */}
-      <h3 className="text-[1.05rem] font-heading font-bold text-[#f0f0f5] group-hover:text-white transition-colors truncate w-full">
+      <h3 className="text-[1.05rem] font-heading font-bold text-[var(--text-primary)] group-hover:text-white transition-colors truncate w-full">
         {artist.name}
       </h3>
       <p className="text-xs font-semibold tracking-wider uppercase text-purple-400/80 mt-0.5 mb-3">
@@ -56,7 +48,7 @@ const ArtistCard = ({ artist }) => {
         <div className="text-center">
           <div className="flex items-center justify-center gap-1 mb-0.5">
             <Images className="w-3 h-3 text-purple-400/60" />
-            <p className="font-heading font-bold text-[#f0f0f5] text-sm">{artist.artworks_count || 0}</p>
+            <p className="font-heading font-bold text-[var(--text-primary)] text-sm">{artist.artworks_count || 0}</p>
           </div>
           <p className="text-[10px] text-[#6b6b80] uppercase tracking-widest">Works</p>
         </div>
@@ -64,7 +56,7 @@ const ArtistCard = ({ artist }) => {
         <div className="text-center">
           <div className="flex items-center justify-center gap-1 mb-0.5">
             <Users className="w-3 h-3 text-cyan-400/60" />
-            <p className="font-heading font-bold text-[#f0f0f5] text-sm">
+            <p className="font-heading font-bold text-[var(--text-primary)] text-sm">
               {artist.followers_count >= 1000
                 ? `${(artist.followers_count / 1000).toFixed(1)}k`
                 : artist.followers_count || 0}
@@ -78,7 +70,7 @@ const ArtistCard = ({ artist }) => {
       {artist.specialties?.length > 0 && (
         <div className="flex flex-wrap justify-center gap-1.5 mb-5">
           {artist.specialties.slice(0, 3).map((s) => (
-            <span key={s} className="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-white/[0.05] border border-white/10 text-[#a0a0b8]">
+            <span key={s} className="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-white/[0.05] border border-white/10 text-[var(--text-muted)]">
               {s}
             </span>
           ))}
@@ -87,7 +79,7 @@ const ArtistCard = ({ artist }) => {
 
       {/* CTA buttons */}
       <div className="flex gap-2.5 w-full">
-        <button className="flex-1 py-2.5 rounded-xl text-sm font-medium glass border border-white/10 text-[#a0a0b8] hover:text-white hover:border-purple-500/30 hover:bg-purple-500/5 transition-all duration-300">
+        <button className="flex-1 py-2.5 rounded-xl text-sm font-medium glass border border-white/10 text-[var(--text-muted)] hover:text-white hover:border-purple-500/30 hover:bg-purple-500/5 transition-all duration-300">
           Follow
         </button>
         <Link to={profileUrl} className="flex-1">

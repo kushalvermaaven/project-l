@@ -5,7 +5,7 @@ import Button from '../../components/ui/Button';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center p-4 relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 blur-[100px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/20 blur-[100px] rounded-full pointer-events-none"></div>
@@ -14,10 +14,10 @@ export default function NotFound() {
         <h1 className="text-9xl font-heading font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-400">
           404
         </h1>
-        <h2 className="text-3xl font-heading font-bold text-[#f0f0f5] mb-4">
+        <h2 className="text-3xl font-heading font-bold text-[var(--text-primary)] mb-4">
           Page not found
         </h2>
-        <p className="text-lg text-[#a0a0b8] mb-10">
+        <p className="text-lg text-[var(--text-muted)] mb-10">
           Oops! The page you're looking for doesn't exist, has been moved, or is temporarily unavailable.
         </p>
         

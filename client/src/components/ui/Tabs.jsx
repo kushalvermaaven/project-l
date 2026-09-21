@@ -16,7 +16,7 @@ const Tabs = ({ tabs = [], activeTab, onChange, className = '' }) => {
                 flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap
                 ${isActive 
                   ? 'bg-gradient-to-r from-purple-600 to-cyan-500 text-white shadow-lg' 
-                  : 'text-[#a0a0b8] hover:text-white hover:bg-white/5'}
+                  : 'text-[var(--text-muted)] hover:text-white hover:bg-white/5'}
               `}
             >
               {Icon && <Icon className="w-4 h-4" />}

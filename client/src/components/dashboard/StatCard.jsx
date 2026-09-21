@@ -28,9 +28,9 @@ const StatCard = ({
         </div>
       )}
       <div className="flex-1">
-        <p className="text-sm text-[#a0a0b8] mb-1">{label}</p>
+        <p className="text-sm text-[var(--text-muted)] mb-1">{label}</p>
         <div className="flex items-baseline gap-3">
-          <h3 className="text-3xl font-heading font-bold text-[#f0f0f5]">{value}</h3>
+          <h3 className="text-3xl font-heading font-bold text-[var(--text-primary)]">{value}</h3>
           {trend && (
             <span className={`text-sm flex items-center gap-1 ${trendColor}`}>
               <TrendIcon className="w-4 h-4" />

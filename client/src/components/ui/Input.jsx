@@ -17,7 +17,7 @@ const Input = ({
   className = '',
   ...rest
 }) => {
-  const baseClasses = "w-full bg-white/5 border rounded-xl text-[#f0f0f5] placeholder:text-[#6b6b80] transition-all duration-200 outline-none";
+  const baseClasses = "w-full bg-white/5 border rounded-xl text-[var(--text-primary)] placeholder:text-[#6b6b80] transition-all duration-200 outline-none";
   const errorClasses = error ? "border-red-500 focus:ring-1 focus:ring-red-500/50" : "border-white/10 focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50";
   const paddingClasses = type === 'textarea' ? 'p-4' : 'px-4 py-3';
   const iconPaddingClasses = Icon ? (iconPosition === 'left' ? 'pl-11' : 'pr-11') : '';
@@ -27,7 +27,7 @@ const Input = ({
   return (
     <div className="w-full flex flex-col gap-1.5">
       {label && (
-        <label className="text-sm font-medium text-[#a0a0b8] block">
+        <label className="text-sm font-medium text-[var(--text-muted)] block">
           {label} {required && <span className="text-red-400">*</span>}
         </label>
       )}
@@ -59,7 +59,7 @@ const Input = ({
             {...rest}
           >
             {options.map((opt, i) => (
-              <option key={i} value={opt.value} className="bg-[#1a1a2e] text-[#f0f0f5]">
+              <option key={i} value={opt.value} className="bg-[var(--bg-tertiary)] text-[var(--text-primary)]">
                 {opt.label}
               </option>
             ))}

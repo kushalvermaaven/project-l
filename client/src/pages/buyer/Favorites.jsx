@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { FavoritesContext } from '../../contexts/FavoritesContext';
 import { sampleArtworks } from '../../data/sampleData';
 
-const categories = ['All', 'Digital Art', 'Paintings', 'Photography', '3D Modeling'];
+const categories = ['All', 'Illustration', 'Paintings', 'Photography', '3D Modeling'];
 
 export default function Favorites() {
   const { favorites } = useContext(FavoritesContext) || { favorites: [] };
@@ -33,10 +33,10 @@ export default function Favorites() {
       <div className="p-4 md:p-8 space-y-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-heading font-bold text-[#f0f0f5] flex items-center gap-3">
+            <h1 className="text-3xl font-heading font-bold text-[var(--text-primary)] flex items-center gap-3">
               <Heart className="w-8 h-8 text-pink-500" />
               My Favorites
-              <span className="text-sm px-3 py-1 bg-white/10 rounded-full text-[#a0a0b8] font-normal font-sans">
+              <span className="text-sm px-3 py-1 bg-white/10 rounded-full text-[var(--text-muted)] font-normal font-sans">
                 {displayArtworks.length}
               </span>
             </h1>
@@ -46,7 +46,7 @@ export default function Favorites() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="bg-[#13131a] border border-white/10 rounded-xl px-4 py-2 text-sm text-[#f0f0f5] focus:outline-none focus:border-purple-500"
+              className="bg-[var(--bg-secondary)] border border-white/10 rounded-xl px-4 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-purple-500"
             >
               <option value="recent">Recently Added</option>
               <option value="price_asc">Price: Low to High</option>
@@ -66,7 +66,7 @@ export default function Favorites() {
                   className={`px-4 py-2 whitespace-nowrap text-sm font-medium border-b-2 transition-colors ${
                     activeTab === cat 
                       ? 'border-purple-500 text-purple-400' 
-                      : 'border-transparent text-[#a0a0b8] hover:text-[#f0f0f5]'
+                      : 'border-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                   }`}
                 >
                   {cat}
@@ -78,7 +78,7 @@ export default function Favorites() {
               <ArtworkGrid artworks={filteredArtworks} />
             ) : (
               <div className="py-20 text-center">
-                <p className="text-[#a0a0b8]">No favorites found in this category.</p>
+                <p className="text-[var(--text-muted)]">No favorites found in this category.</p>
               </div>
             )}
           </>

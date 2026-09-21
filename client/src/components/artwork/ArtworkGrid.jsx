@@ -25,11 +25,11 @@ const ArtworkGrid = ({ artworks = [], loading = false, emptyMessage = "No artwor
       {artworks.map((artwork, index) => (
         <motion.div 
           key={artwork.id}
-          initial={{ opacity: 0, y: 50, scale: 0.9 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, delay: index * 0.1, type: "spring", bounce: 0.4 }}
-          whileHover={{ y: -10 }}
+          transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.3) }}
+          whileHover={{ y: -5 }}
         >
           <ArtworkCard artwork={artwork} />
         </motion.div>

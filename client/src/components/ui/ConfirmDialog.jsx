@@ -30,7 +30,7 @@ const ConfirmDialog = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title} footer={footer} size="sm">
-      <p className="text-[#a0a0b8]">{message}</p>
+      <p className="text-[var(--text-muted)]">{message}</p>
     </Modal>
   );
 };

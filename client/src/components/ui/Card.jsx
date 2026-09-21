@@ -14,7 +14,7 @@ const Card = ({
   
   const variants = {
     glass: "bg-white/5 backdrop-blur-xl border border-white/10",
-    solid: "bg-[#1a1a2e] border border-white/5",
+    solid: "bg-[var(--bg-tertiary)] border border-white/5",
     gradient: "bg-gradient-to-br from-purple-900/20 to-cyan-900/20 border border-purple-500/20",
   };
 

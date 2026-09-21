@@ -47,7 +47,7 @@ const ArtworkFilters = ({ filters, onFilterChange, onReset }) => {
         <div className="p-6 bg-white/5 border border-white/10 rounded-2xl flex flex-col gap-6">
           
           <div>
-            <h4 className="text-sm font-medium text-[#a0a0b8] mb-3">Categories</h4>
+            <h4 className="text-sm font-medium text-[var(--text-muted)] mb-3">Categories</h4>
             <div className="flex flex-wrap gap-2">
               <CategoryChip 
                 category={{ name: 'All', id: '' }} 
@@ -67,7 +67,7 @@ const ArtworkFilters = ({ filters, onFilterChange, onReset }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
-              <h4 className="text-sm font-medium text-[#a0a0b8] mb-3">Price Range</h4>
+              <h4 className="text-sm font-medium text-[var(--text-muted)] mb-3">Price Range</h4>
               <div className="flex items-center gap-2">
                 <Input type="number" placeholder="Min" value={filters.minPrice || ''} onChange={(e) => handleChange('minPrice', e.target.value)} />
                 <span className="text-[#6b6b80]">-</span>
@@ -112,7 +112,7 @@ const ArtworkFilters = ({ filters, onFilterChange, onReset }) => {
                 <div className={`block w-10 h-6 rounded-full transition-colors ${filters.isCustomizable ? 'bg-purple-500' : 'bg-white/20'}`}></div>
                 <div className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform ${filters.isCustomizable ? 'translate-x-4' : ''}`}></div>
               </div>
-              <span className="text-sm text-[#f0f0f5]">Customizable Only</span>
+              <span className="text-sm text-[var(--text-primary)]">Customizable Only</span>
             </label>
 
             <div className="w-48">

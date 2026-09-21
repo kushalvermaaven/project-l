@@ -34,16 +34,16 @@ const Reports = () => {
                     <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
                   </linearGradient>
                   <linearGradient id="colorPlatform" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.8}/>
-                    <stop offset="95%" stopColor="#06b6d4" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="var(--accent-cyan)" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="var(--accent-cyan)" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
                 <XAxis dataKey="name" stroke="#6b6b80" />
                 <YAxis stroke="#6b6b80" />
-                <Tooltip contentStyle={{ backgroundColor: '#13131a', borderColor: '#ffffff10' }} />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: '#ffffff10' }} />
                 <Area type="monotone" dataKey="total" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorTotal)" name="Total GMV" />
-                <Area type="monotone" dataKey="platform" stroke="#06b6d4" fillOpacity={1} fill="url(#colorPlatform)" name="Platform Revenue" />
+                <Area type="monotone" dataKey="platform" stroke="var(--accent-cyan)" fillOpacity={1} fill="url(#colorPlatform)" name="Platform Revenue" />
               </AreaChart>
             </ResponsiveContainer>
           </div>

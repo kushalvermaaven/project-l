@@ -12,7 +12,7 @@ const CategoryChip = ({ category, active, onClick, count, className = '' }) => {
         rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer flex items-center gap-2 border
         ${active 
           ? 'bg-gradient-to-r from-purple-600 to-cyan-500 text-white border-transparent shadow-lg shadow-purple-500/20' 
-          : 'bg-white/5 text-[#a0a0b8] border-white/10 hover:bg-white/10 hover:text-white'}
+          : 'bg-white/5 text-[var(--text-muted)] border-white/10 hover:bg-white/10 hover:text-white'}
         ${className}
       `}
     >

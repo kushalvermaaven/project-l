@@ -20,14 +20,14 @@ const ChatWindow = ({ conversation, messages = [], onSendMessage, currentUserId 
 
   if (!conversation) {
     return (
-      <div className="flex-1 flex items-center justify-center bg-[#0a0a0f] rounded-2xl border border-white/5">
+      <div className="flex-1 flex items-center justify-center bg-[var(--bg-primary)] rounded-2xl border border-white/5">
         <p className="text-[#6b6b80]">Select a conversation to start chatting</p>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col h-full bg-[#13131a] rounded-2xl border border-white/10 overflow-hidden">
+    <div className="flex flex-col h-full bg-[var(--bg-secondary)] rounded-2xl border border-white/10 overflow-hidden">
       {/* Header */}
       <div className="p-4 bg-white/5 backdrop-blur flex items-center gap-4 border-b border-white/10">
         <div className="relative">
@@ -37,12 +37,12 @@ const ChatWindow = ({ conversation, messages = [], onSendMessage, currentUserId 
             className="w-10 h-10 rounded-full object-cover"
           />
           {conversation.isOnline && (
-            <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-[#13131a] rounded-full"></div>
+            <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-[var(--bg-secondary)] rounded-full"></div>
           )}
         </div>
         <div>
-          <h3 className="font-heading font-semibold text-[#f0f0f5]">{conversation.name}</h3>
-          <p className="text-xs text-[#a0a0b8]">{conversation.role || 'User'}</p>
+          <h3 className="font-heading font-semibold text-[var(--text-primary)]">{conversation.name}</h3>
+          <p className="text-xs text-[var(--text-muted)]">{conversation.role || 'User'}</p>
         </div>
       </div>
 
@@ -57,7 +57,7 @@ const ChatWindow = ({ conversation, messages = [], onSendMessage, currentUserId 
             const isMe = msg.senderId === currentUserId;
             return (
               <div key={msg.id || idx} className={`flex flex-col ${isMe ? 'items-end' : 'items-start'} animate-in slide-in-from-bottom-2 fade-in duration-300`}>
-                <div className={`max-w-[75%] rounded-2xl px-4 py-2 ${isMe ? 'bg-gradient-to-r from-purple-600 to-cyan-500 text-white rounded-br-sm' : 'bg-white/10 text-[#f0f0f5] rounded-bl-sm'}`}>
+                <div className={`max-w-[75%] rounded-2xl px-4 py-2 ${isMe ? 'bg-gradient-to-r from-purple-600 to-cyan-500 text-white rounded-br-sm' : 'bg-white/10 text-[var(--text-primary)] rounded-bl-sm'}`}>
                   <p className="text-sm whitespace-pre-wrap">{msg.text}</p>
                 </div>
                 <span className="text-xs text-[#6b6b80] mt-1">
@@ -73,14 +73,14 @@ const ChatWindow = ({ conversation, messages = [], onSendMessage, currentUserId 
       {/* Input */}
       <div className="p-4 bg-white/5 backdrop-blur border-t border-white/10">
         <form onSubmit={handleSend} className="flex items-end gap-2">
-          <button type="button" className="p-3 text-[#a0a0b8] hover:text-white transition-colors rounded-xl hover:bg-white/10">
+          <button type="button" className="p-3 text-[var(--text-muted)] hover:text-white transition-colors rounded-xl hover:bg-white/10">
             <ImageIcon className="w-5 h-5" />
           </button>
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Type a message..."
-            className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-[#f0f0f5] placeholder:text-[#6b6b80] focus:outline-none focus:border-purple-500 resize-none"
+            className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-[var(--text-primary)] placeholder:text-[#6b6b80] focus:outline-none focus:border-purple-500 resize-none"
             rows={Math.min(3, text.split('\n').length || 1)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) {

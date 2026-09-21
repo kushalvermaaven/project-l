@@ -27,12 +27,12 @@ const ToastItem = ({ toast, onClose }) => {
   };
 
   return (
-    <div className="relative overflow-hidden bg-[#1a1a2e]/90 backdrop-blur-xl border border-white/10 p-4 rounded-xl shadow-xl flex items-start gap-3 w-80 animate-in slide-in-from-right-8 fade-in duration-300">
+    <div className="relative overflow-hidden bg-[var(--bg-tertiary)]/90 backdrop-blur-xl border border-white/10 p-4 rounded-xl shadow-xl flex items-start gap-3 w-80 animate-in slide-in-from-right-8 fade-in duration-300">
       <div className="flex-shrink-0 mt-0.5">{icons[toast.type]}</div>
       <div className="flex-1 mr-4">
-        <p className="text-sm text-[#f0f0f5]">{toast.message}</p>
+        <p className="text-sm text-[var(--text-primary)]">{toast.message}</p>
       </div>
-      <button onClick={() => onClose(toast.id)} className="text-[#a0a0b8] hover:text-white transition-colors flex-shrink-0">
+      <button onClick={() => onClose(toast.id)} className="text-[var(--text-muted)] hover:text-white transition-colors flex-shrink-0">
         <X className="w-4 h-4" />
       </button>
       <div className="absolute bottom-0 left-0 h-1 bg-white/5 w-full">

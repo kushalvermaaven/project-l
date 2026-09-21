@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Rating from '../ui/Rating';
 import { ArrowRight } from 'lucide-react';
 
 const ArtistPreview = ({ artist }) => {
@@ -19,14 +18,12 @@ const ArtistPreview = ({ artist }) => {
       
       <div className="flex-1 min-w-0">
         <Link to={`/artist/${artist.id || artist.user_id}`} className="group/name block w-fit">
-          <h4 className="text-xl font-heading font-bold text-[#f0f0f5] truncate group-hover/name:text-purple-400 transition-colors">
+          <h4 className="text-xl font-heading font-bold text-[var(--text-primary)] truncate group-hover/name:text-purple-400 transition-colors">
             {artist.name}
           </h4>
         </Link>
         <div className="flex items-center gap-3 mt-1.5">
           <span className="text-xs font-semibold tracking-wider uppercase text-purple-400/80 truncate">{artist.art_style}</span>
-          <span className="text-[#6b6b80] text-xs">•</span>
-          <Rating value={artist.rating || 5} size="sm" readonly showValue />
         </div>
       </div>
       

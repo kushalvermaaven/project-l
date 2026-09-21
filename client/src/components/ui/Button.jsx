@@ -19,7 +19,7 @@ const Button = ({
     primary: "bg-gradient-to-r from-purple-600 to-cyan-500 text-white shadow-lg shadow-purple-500/20",
     secondary: "bg-white/10 backdrop-blur border border-white/10 text-white hover:bg-white/20",
     outline: "border border-purple-500 text-purple-400 hover:bg-purple-500/10",
-    ghost: "bg-transparent text-[#a0a0b8] hover:bg-white/5 hover:text-white",
+    ghost: "bg-transparent text-[var(--text-muted)] hover:bg-white/5 hover:text-white",
     danger: "bg-red-500/20 text-red-400 border border-red-500/20 hover:bg-red-500/30",
   };
 

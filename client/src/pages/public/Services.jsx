@@ -44,11 +44,11 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-[#f0f0f5] py-24 px-6">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">What we offer.</h1>
-          <p className="text-xl text-[#a0a0b8]">Comprehensive tools and services for both art buyers and independent artists.</p>
+          <p className="text-xl text-[var(--text-muted)]">Comprehensive tools and services for both art buyers and independent artists.</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
@@ -58,7 +58,7 @@ const Services = () => {
                 <service.icon className="w-8 h-8 text-purple-400 group-hover:scale-110 transition-transform" />
               </div>
               <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-              <p className="text-[#a0a0b8] mb-8 leading-relaxed h-24">{service.desc}</p>
+              <p className="text-[var(--text-muted)] mb-8 leading-relaxed h-24">{service.desc}</p>
               <Link to={service.link} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium">
                 Learn More <ArrowRight className="w-4 h-4" />
               </Link>
@@ -66,9 +66,9 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="bg-[#13131a] border border-white/5 rounded-3xl p-12 text-center max-w-4xl mx-auto">
+        <div className="bg-[var(--bg-secondary)] border border-white/5 rounded-3xl p-12 text-center max-w-4xl mx-auto">
           <h2 className="text-3xl font-heading font-bold mb-6">Ready to explore?</h2>
-          <p className="text-[#a0a0b8] mb-8">Join the platform redefining how original art is discovered and sold.</p>
+          <p className="text-[var(--text-muted)] mb-8">Join the platform redefining how original art is discovered and sold.</p>
           <div className="flex justify-center gap-4">
             <Link to="/explore">
               <Button size="lg">Browse Artworks</Button>

@@ -8,7 +8,7 @@ const Badge = ({
   className = '',
 }) => {
   const variants = {
-    default: "bg-white/10 text-[#a0a0b8]",
+    default: "bg-white/10 text-[var(--text-muted)]",
     purple: "bg-purple-500/20 text-purple-400",
     cyan: "bg-cyan-500/20 text-cyan-400",
     green: "bg-green-500/20 text-green-400",
@@ -24,7 +24,7 @@ const Badge = ({
   };
 
   const dotColors = {
-    default: "bg-[#a0a0b8]",
+    default: "bg-[var(--text-muted)]",
     purple: "bg-purple-400",
     cyan: "bg-cyan-400",
     green: "bg-green-400",

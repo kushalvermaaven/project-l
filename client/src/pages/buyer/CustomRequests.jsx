@@ -25,7 +25,7 @@ export default function CustomRequests() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <Paintbrush className="w-8 h-8 text-pink-400" />
-            <h1 className="text-3xl font-heading font-bold text-[#f0f0f5]">Custom Requests</h1>
+            <h1 className="text-3xl font-heading font-bold text-[var(--text-primary)]">Custom Requests</h1>
           </div>
           <Link to="/custom-art">
             <Button variant="primary" className="flex items-center gap-2">
@@ -43,7 +43,7 @@ export default function CustomRequests() {
               className={`px-4 py-2 whitespace-nowrap text-sm font-medium border-b-2 transition-colors ${
                 activeTab === tab 
                   ? 'border-pink-500 text-pink-400' 
-                  : 'border-transparent text-[#a0a0b8] hover:text-[#f0f0f5]'
+                  : 'border-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)]'
               }`}
             >
               {tab}
@@ -57,7 +57,7 @@ export default function CustomRequests() {
             filteredRequests.map(req => (
               <div key={req.id} className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors flex flex-col h-full">
                 <div className="flex justify-between items-start mb-4 gap-4">
-                  <h3 className="text-lg font-bold text-[#f0f0f5] line-clamp-1">{req.title || 'Untitled Request'}</h3>
+                  <h3 className="text-lg font-bold text-[var(--text-primary)] line-clamp-1">{req.title || 'Untitled Request'}</h3>
                   <span className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
                     req.status === 'Completed' ? 'bg-green-500/20 text-green-300' :
                     req.status === 'In Progress' ? 'bg-blue-500/20 text-blue-300' :
@@ -67,20 +67,20 @@ export default function CustomRequests() {
                   </span>
                 </div>
                 
-                <p className="text-[#a0a0b8] text-sm line-clamp-2 mb-4 flex-1">{req.description}</p>
+                <p className="text-[var(--text-muted)] text-sm line-clamp-2 mb-4 flex-1">{req.description}</p>
                 
-                <div className="grid grid-cols-2 gap-4 text-sm mb-6 bg-[#13131a] p-4 rounded-xl border border-white/5">
+                <div className="grid grid-cols-2 gap-4 text-sm mb-6 bg-[var(--bg-secondary)] p-4 rounded-xl border border-white/5">
                   <div>
                     <span className="text-[#6b6b80] block text-xs mb-1">Style</span>
-                    <span className="text-[#f0f0f5]">{req.style || 'Any'}</span>
+                    <span className="text-[var(--text-primary)]">{req.style || 'Any'}</span>
                   </div>
                   <div>
                     <span className="text-[#6b6b80] block text-xs mb-1">Budget</span>
-                    <span className="text-[#f0f0f5]">{req.budget || 'TBD'}</span>
+                    <span className="text-[var(--text-primary)]">{req.budget || 'TBD'}</span>
                   </div>
                   <div>
                     <span className="text-[#6b6b80] block text-xs mb-1">Deadline</span>
-                    <span className="text-[#f0f0f5]">{req.deadline ? formatDate(req.deadline) : 'Flexible'}</span>
+                    <span className="text-[var(--text-primary)]">{req.deadline ? formatDate(req.deadline) : 'Flexible'}</span>
                   </div>
                   <div>
                     <span className="text-[#6b6b80] block text-xs mb-1">Artist</span>
@@ -124,17 +124,17 @@ export default function CustomRequests() {
                 <span className="px-3 py-1 bg-white/10 rounded-full text-sm text-white">{selectedReq.status}</span>
               </div>
               
-              <div className="bg-[#13131a] rounded-xl p-4 border border-white/10">
-                <h4 className="text-sm font-medium text-[#a0a0b8] mb-2">Description</h4>
+              <div className="bg-[var(--bg-secondary)] rounded-xl p-4 border border-white/10">
+                <h4 className="text-sm font-medium text-[var(--text-muted)] mb-2">Description</h4>
                 <p className="text-white text-sm whitespace-pre-wrap">{selectedReq.description}</p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-[#13131a] rounded-xl p-4 border border-white/10">
+                <div className="bg-[var(--bg-secondary)] rounded-xl p-4 border border-white/10">
                   <span className="text-[#6b6b80] block text-xs mb-1">Budget Range</span>
                   <span className="text-white font-medium">{selectedReq.budget}</span>
                 </div>
-                <div className="bg-[#13131a] rounded-xl p-4 border border-white/10">
+                <div className="bg-[var(--bg-secondary)] rounded-xl p-4 border border-white/10">
                   <span className="text-[#6b6b80] block text-xs mb-1">Target Deadline</span>
                   <span className="text-white font-medium">{selectedReq.deadline ? formatDate(selectedReq.deadline) : 'Flexible'}</span>
                 </div>

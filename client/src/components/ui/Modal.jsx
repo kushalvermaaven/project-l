@@ -42,17 +42,17 @@ const Modal = ({
         className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" 
         onClick={closeOnBackdrop ? onClose : undefined} 
       />
-      <div className={`relative w-full ${sizes[size]} bg-[#1a1a2e] border border-white/10 rounded-2xl shadow-2xl animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]`}>
+      <div className={`relative w-full ${sizes[size]} bg-[var(--bg-tertiary)] border border-white/10 rounded-2xl shadow-2xl animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]`}>
         {title && (
           <div className="flex items-center justify-between p-6 border-b border-white/10">
-            <h2 className="text-xl font-heading font-semibold text-[#f0f0f5]">{title}</h2>
-            <button onClick={onClose} className="text-[#a0a0b8] hover:text-white transition-colors p-1 rounded-lg hover:bg-white/5">
+            <h2 className="text-xl font-heading font-semibold text-[var(--text-primary)]">{title}</h2>
+            <button onClick={onClose} className="text-[var(--text-muted)] hover:text-white transition-colors p-1 rounded-lg hover:bg-white/5">
               <X className="w-5 h-5" />
             </button>
           </div>
         )}
         {!title && (
-          <button onClick={onClose} className="absolute top-4 right-4 text-[#a0a0b8] hover:text-white transition-colors p-1 rounded-lg hover:bg-white/5 z-10">
+          <button onClick={onClose} className="absolute top-4 right-4 text-[var(--text-muted)] hover:text-white transition-colors p-1 rounded-lg hover:bg-white/5 z-10">
             <X className="w-5 h-5" />
           </button>
         )}

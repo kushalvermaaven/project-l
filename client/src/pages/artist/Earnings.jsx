@@ -23,9 +23,9 @@ const mockEarningsData = [
 ];
 
 const mockCategoryData = [
-  { name: 'Digital Art', value: 35, color: '#8b5cf6' },
-  { name: 'Paintings', value: 25, color: '#06b6d4' },
-  { name: 'Abstract', value: 20, color: '#ec4899' },
+  { name: 'Illustration', value: 35, color: '#8b5cf6' },
+  { name: 'Paintings', value: 25, color: 'var(--accent-cyan)' },
+  { name: 'Abstract', value: 20, color: 'var(--accent-pink)' },
   { name: 'Portraits', value: 15, color: '#f97316' },
   { name: 'Other', value: 5, color: '#10b981' },
 ];
@@ -85,17 +85,17 @@ const Earnings = () => {
                     <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
                   </linearGradient>
                   <linearGradient id="colorNet" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.8}/>
-                    <stop offset="95%" stopColor="#06b6d4" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="var(--accent-cyan)" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="var(--accent-cyan)" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
                 <XAxis dataKey="month" stroke="#6b6b80" />
                 <YAxis stroke="#6b6b80" />
-                <Tooltip contentStyle={{ backgroundColor: '#13131a', borderColor: '#ffffff10' }} />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: '#ffffff10' }} />
                 <Legend />
                 <Area type="monotone" dataKey="gross" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorGross)" name="Gross Sales" />
-                <Area type="monotone" dataKey="net" stroke="#06b6d4" fillOpacity={1} fill="url(#colorNet)" name="Net Earnings" />
+                <Area type="monotone" dataKey="net" stroke="var(--accent-cyan)" fillOpacity={1} fill="url(#colorNet)" name="Net Earnings" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -111,7 +111,7 @@ const Earnings = () => {
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
-                <Tooltip contentStyle={{ backgroundColor: '#13131a', borderColor: '#ffffff10' }} />
+                <Tooltip contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: '#ffffff10' }} />
                 <Legend />
               </PieChart>
             </ResponsiveContainer>

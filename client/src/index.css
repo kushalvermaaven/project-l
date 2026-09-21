@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,23 +7,22 @@
 /* ============================================
    IMPORT FONTS
    ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
 
 /* ============================================
    CSS CUSTOM PROPERTIES
    ============================================ */
 :root {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #13131a;
-  --bg-tertiary: #1a1a2e;
-  --accent-purple: #7c3aed;
-  --accent-cyan: #06b6d4;
-  --accent-pink: #ec4899;
-  --text-primary: #f0f0f5;
-  --text-muted: #a0a0b8;
-  --border-subtle: rgba(255,255,255,0.08);
-  --glow-purple: rgba(124, 58, 237, 0.4);
-  --glow-cyan: rgba(6, 182, 212, 0.4);
+  --bg-primary: #fdf6eb;
+  --bg-secondary: #f4e6d3;
+  --bg-tertiary: #e6c28f;
+  --accent-purple: #4b0082;
+  --accent-cyan: #008b8b;
+  --accent-pink: #c71585;
+  --text-primary: #2d1b4e;
+  --text-muted: #6b5c82;
+  --border-subtle: rgba(75, 0, 130, 0.15);
+  --glow-purple: rgba(75, 0, 130, 0.2);
+  --glow-cyan: rgba(0, 139, 139, 0.2);
 }
 
 /* ============================================
@@ -149,68 +150,68 @@ body::before {
    ============================================ */
 @layer utilities {
   .glass {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
   }
   .glass-strong {
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(40px) saturate(200%);
     -webkit-backdrop-filter: blur(40px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.08);
   }
   .glass-card {
-    background: rgba(26, 26, 46, 0.7);
+    background: rgba(253, 246, 235, 0.8);
     backdrop-filter: blur(24px) saturate(160%);
     -webkit-backdrop-filter: blur(24px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(75, 0, 130, 0.1);
   }
   .glass-dark {
-    background: rgba(13, 13, 26, 0.85);
+    background: rgba(244, 230, 211, 0.85);
     backdrop-filter: blur(32px) saturate(180%);
     -webkit-backdrop-filter: blur(32px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(75, 0, 130, 0.1);
   }
   /* Neumorphism dark */
   .neuro {
-    background: #13131a;
+    background: var(--bg-secondary);
     box-shadow: 6px 6px 16px #08080e, -6px -6px 16px #1e1e28;
   }
   .neuro-inset {
-    background: #13131a;
+    background: var(--bg-secondary);
     box-shadow: inset 4px 4px 10px #08080e, inset -4px -4px 10px #1e1e28;
   }
   /* Gradient text */
   .gradient-text {
     @apply text-transparent bg-clip-text;
-    background-image: linear-gradient(135deg, #a855f7, #06b6d4);
+    background-image: linear-gradient(135deg, #4b0082, #008b8b);
   }
   .gradient-text-warm {
     @apply text-transparent bg-clip-text;
-    background-image: linear-gradient(135deg, #f97316, #ec4899);
+    background-image: linear-gradient(135deg, #ff4500, #c71585);
   }
   /* Neon glows */
   .neon-glow {
-    box-shadow: 0 0 20px rgba(124, 58, 237, 0.5),
-                0 0 60px rgba(124, 58, 237, 0.2);
+    box-shadow: 0 0 20px rgba(75, 0, 130, 0.5),
+                0 0 60px rgba(75, 0, 130, 0.2);
   }
   .neon-glow-cyan {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5),
-                0 0 60px rgba(6, 182, 212, 0.2);
+    box-shadow: 0 0 20px rgba(0, 139, 139, 0.5),
+                0 0 60px rgba(0, 139, 139, 0.2);
   }
   .neon-glow-pink {
-    box-shadow: 0 0 20px rgba(236, 72, 153, 0.5),
-                0 0 60px rgba(236, 72, 153, 0.2);
+    box-shadow: 0 0 20px rgba(199, 21, 133, 0.5),
+                0 0 60px rgba(199, 21, 133, 0.2);
   }
   /* Text glow */
   .text-glow {
-    text-shadow: 0 0 20px rgba(168, 85, 247, 0.8),
-                 0 0 40px rgba(168, 85, 247, 0.4);
+    text-shadow: 0 0 20px rgba(75, 0, 130, 0.8),
+                 0 0 40px rgba(75, 0, 130, 0.4);
   }
   .text-glow-cyan {
-    text-shadow: 0 0 20px rgba(6, 182, 212, 0.8),
-                 0 0 40px rgba(6, 182, 212, 0.4);
+    text-shadow: 0 0 20px rgba(0, 139, 139, 0.8),
+                 0 0 40px rgba(0, 139, 139, 0.4);
   }
   /* Gradient borders */
   .gradient-border {
@@ -223,7 +224,7 @@ body::before {
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(168,85,247,0.6), rgba(6,182,212,0.6));
+    background: linear-gradient(135deg, rgba(75,0,130,0.6), rgba(0,139,139,0.6));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -234,11 +235,11 @@ body::before {
   .aurora-bg {
     background: linear-gradient(
       125deg,
-      rgba(124,58,237,0.15) 0%,
-      rgba(6,182,212,0.1) 25%,
-      rgba(236,72,153,0.1) 50%,
-      rgba(124,58,237,0.15) 75%,
-      rgba(6,182,212,0.1) 100%
+      rgba(75,0,130,0.15) 0%,
+      rgba(0,139,139,0.1) 25%,
+      rgba(199,21,133,0.1) 50%,
+      rgba(75,0,130,0.15) 75%,
+      rgba(0,139,139,0.1) 100%
     );
     background-size: 400% 400%;
     animation: aurora 8s ease infinite;
@@ -365,7 +366,7 @@ body::before {
 .animate-flicker    { animation: text-flicker 8s linear infinite; }
 .animate-slide-up   { animation: slide-up 0.5s ease-out; }
 .animate-marquee    { animation: marquee 25s linear infinite; }
-.animate-shimmer    { animation: shimmer 2s linear infinite; background: linear-gradient(to right, #1a1a2e 4%, #252540 25%, #1a1a2e 36%); background-size: 1000px 100%; }
+.animate-shimmer    { animation: shimmer 2s linear infinite; background: linear-gradient(to right, var(--bg-tertiary) 4%, #252540 25%, var(--bg-tertiary) 36%); background-size: 1000px 100%; }
 
 /* ============================================
    HERO PARTICLE / ORB EFFECTS
@@ -491,7 +492,7 @@ body::before {
    SKELETON ANIMATION
    ============================================ */
 .skeleton {
-  background: linear-gradient(90deg, #1a1a2e 25%, #252540 50%, #1a1a2e 75%);
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, #252540 50%, var(--bg-tertiary) 75%);
   background-size: 400% 100%;
   animation: shimmer 1.5s ease-in-out infinite;
 }
@@ -579,3 +580,38 @@ body::before {
 .parallax-layer {
   will-change: transform;
 }
+
+/* ============================================
+   LIGHT THEME OVERRIDES
+   ============================================ */
+.text-white { color: var(--text-primary) !important; }
+.text-\[\#f0f0f5\] { color: var(--text-primary) !important; }
+.text-\[\#a0a0b8\] { color: var(--text-muted) !important; }
+
+/* Keep text white on colorful backgrounds */
+.from-purple-600 { color: #ffffff !important; }
+.from-purple-600 .text-white { color: #ffffff !important; }
+button:has(.from-purple-600) { color: #ffffff !important; }
+button:has(.from-cyan-500) { color: #ffffff !important; }
+.bg-purple-600 { color: #ffffff !important; }
+.bg-gradient-to-r { color: #ffffff !important; }
+.bg-gradient-to-br { color: #ffffff !important; }
+
+/* Invert glass backgrounds */
+.bg-white\/5, .bg-white\/10, .bg-white\/20, .bg-white\/\[0\.04\] {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Invert borders */
+.border-white\/10, .border-white\/5, .border-white\/20, .border-white\/8, .border-white\/15, .border-white\/\[0\.06\], .border-white\/\[0\.08\] {
+  border-color: var(--border-subtle) !important;
+}
+
+/* Hardcoded dark backgrounds */
+.bg-\[var\(--bg-primary\)\] { background-color: var(--bg-primary) !important; }
+.bg-\[var\(--bg-secondary\)\] { background-color: var(--bg-secondary) !important; }
+.bg-\[var\(--bg-tertiary\)\] { background-color: var(--bg-tertiary) !important; }
+
+
+.text-\[\#6b6b80\] { color: var(--text-muted) !important; }
+

@@ -9,7 +9,7 @@ const DashboardLayout = ({ children }) => {
   const role = user?.role || 'buyer';
 
   return (
-    <div className="flex h-screen bg-[#0a0a0f] overflow-hidden">
+    <div className="flex h-screen bg-[var(--bg-primary)] overflow-hidden">
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div 
@@ -25,16 +25,13 @@ const DashboardLayout = ({ children }) => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-h-screen overflow-hidden relative">
-        <div className="lg:hidden p-4 flex items-center justify-between border-b border-white/10 bg-[#13131a]/80 backdrop-blur sticky top-0 z-30">
+        <div className="lg:hidden p-4 flex items-center justify-between border-b border-white/10 bg-[var(--bg-secondary)]/80 backdrop-blur sticky top-0 z-30">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center">
-              <span className="text-white font-bold text-xs">A</span>
-            </div>
-            <span className="font-heading font-bold text-[#f0f0f5]">ARTVRKZ</span>
+            <img src="/logo.jpg" alt="Artvrkz Logo" className="h-8 w-auto object-contain rounded" />
           </div>
           <button 
             onClick={() => setSidebarOpen(true)}
-            className="p-2 text-[#a0a0b8] hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+            className="p-2 text-[var(--text-muted)] hover:text-white rounded-lg hover:bg-white/5 transition-colors"
           >
             <Menu className="w-6 h-6" />
           </button>

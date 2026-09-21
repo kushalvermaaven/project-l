@@ -94,7 +94,7 @@ const ArtistOrders = () => {
                 <div>
                   <h4 className="text-gray-400 text-sm font-medium mb-3 uppercase tracking-wider">Update Status</h4>
                   <div className="bg-white/5 rounded-xl p-4 flex flex-col gap-4">
-                    <select className="bg-[#13131a] border border-white/10 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 w-full">
+                    <select className="bg-[var(--bg-secondary)] border border-white/10 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 w-full">
                       <option>Pending</option>
                       <option>Processing</option>
                       <option>Shipped</option>

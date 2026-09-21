@@ -13,18 +13,10 @@ import { FloatingDoodles, ParallaxSection } from '../../components/ui/DoodleAnim
 import { motion, useScroll, useTransform } from 'framer-motion';
 /* ── ticker content ──────────────────────────────────── */
 const tickerItems = [
-  '✦ Digital Art', '✦ Oil Painting', '✦ Photography',
+  '✦ Oil Painting', '✦ Photography',
   '✦ 3D Modeling', '✦ Illustration', '✦ Pixel Art',
   '✦ AI Generative', '✦ Mixed Media', '✦ Sculpture',
   '✦ Vector Art', '✦ Watercolour', '✦ Concept Art',
-];
-
-/* ── stat pills ──────────────────────────────────────── */
-const stats = [
-  { value: '10K+', label: 'Artworks', icon: Palette },
-  { value: '2K+',  label: 'Artists',  icon: Star },
-  { value: '50K+', label: 'Collectors', icon: Heart },
-  { value: '120+', label: 'Countries', icon: Globe },
 ];
 
 /* ── how it works steps ──────────────────────────────── */
@@ -61,6 +53,20 @@ const steps = [
 /* ── category icon map ───────────────────────────────── */
 const catIcons = [Palette, Zap, Star, Globe, Shield, Heart, Search, MessageCircle, Sparkles, Palette];
 
+const categoryPreviewImages = {
+  'digital-art': 'https://images.unsplash.com/photo-1518773553398-650c184e0bb3?q=80&w=800',
+  'originals': 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=800',
+  'painting': 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=800',
+  'photography': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800',
+  '3d-modeling': 'https://images.unsplash.com/photo-1633899306328-c5e70574aaa2?q=80&w=800',
+  'ai-art': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800',
+  'illustration': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800',
+  'vector-art': 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=800',
+  'pixel-art': 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800',
+  'mixed-media': 'https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=800',
+  'sculpture': 'https://images.unsplash.com/photo-1544413660-299165566b1d?q=80&w=800',
+};
+
 const Home = () => {
   useScrollReveal();
   const { scrollYProgress } = useScroll();
@@ -68,7 +74,7 @@ const Home = () => {
   const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-[#f0f0f5] overflow-hidden relative">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden relative">
       <FloatingDoodles />
 
       {/* ══════════════════════════════════════════
@@ -93,18 +99,18 @@ const Home = () => {
           {/* Pill badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-animate border mb-10 animate-slide-up">
             <Sparkles className="w-3.5 h-3.5 text-purple-400 animate-pulse" />
-            <span className="text-xs font-semibold tracking-widest uppercase text-[#c0c0d8]">
-              The future of art discovery
+            <span className="text-xs font-semibold tracking-widest uppercase text-[var(--text-muted)]">
+              India's Premier Art Marketplace
             </span>
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
           </div>
 
           {/* Headline */}
           <h1 className="text-6xl md:text-7xl lg:text-[5.5rem] font-heading font-bold mb-6 leading-[1.05] tracking-tight animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            Art that feels<br />
+            Discover, Collect &<br />
             <span className="relative inline-block">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 animate-gradient-x bg-[size:200%]">
-                like you.
+                Commission Art.
               </span>
               {/* Underline shimmer */}
               <span className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 rounded-full opacity-70" />
@@ -112,58 +118,39 @@ const Home = () => {
           </h1>
 
           {/* Sub */}
-          <p className="text-lg md:text-xl text-[#a0a0b8] max-w-2xl mx-auto mb-10 leading-relaxed animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            Discover original artwork, connect directly with independent artists,
-            and create something made just for you.
+          <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-2xl mx-auto mb-10 leading-relaxed animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            A curated marketplace connecting independent Indian artists with collectors worldwide.
+            Browse originals, commission custom pieces, and own art that tells a story.
           </p>
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            <Link to="/explore">
+            <Link to="/collector">
               <button className="relative px-8 py-4 rounded-2xl font-semibold text-white overflow-hidden group btn-shimmer btn-magnetic">
-                <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 transition-all duration-500 group-hover:from-purple-500 group-hover:to-cyan-400" />
-                <span className="absolute inset-0 blur-lg opacity-0 group-hover:opacity-50 bg-gradient-to-r from-purple-600 to-cyan-500 transition-opacity duration-500" />
+                <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 transition-all duration-500 group-hover:from-purple-500 group-hover:to-cyan-400 pointer-events-none" />
+                <span className="absolute inset-0 blur-lg opacity-0 group-hover:opacity-50 bg-gradient-to-r from-purple-600 to-cyan-500 transition-opacity duration-500 pointer-events-none" />
                 <span className="relative flex items-center gap-2">
-                  Explore Art <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  Collector Section <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
             </Link>
             <Link to="/register?role=artist">
-              <button className="relative px-8 py-4 rounded-2xl font-semibold text-[#f0f0f5] glass border border-white/15 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 group btn-magnetic">
+              <button className="relative px-8 py-4 rounded-2xl font-semibold text-[var(--text-primary)] glass border border-white/15 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 group btn-magnetic">
                 <span className="flex items-center gap-2">
                   Sell Your Art <Palette className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                 </span>
               </button>
             </Link>
           </div>
-
-          {/* Stats */}
-          <div className="flex flex-wrap items-center justify-center gap-3 animate-slide-up stagger-children" style={{ animationDelay: '0.4s' }}>
-            {stats.map(({ value, label, icon: Icon }) => (
-              <div key={label} className="flex items-center gap-2 px-5 py-3 rounded-2xl glass border border-white/8 hover:border-purple-500/30 transition-all duration-300 group card-hover">
-                <Icon className="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform" />
-                <span className="font-heading font-bold text-white">{value}</span>
-                <span className="text-sm text-[#a0a0b8]">{label}</span>
-              </div>
-            ))}
-          </div>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#6b6b80]">
-          <span className="text-xs tracking-widest uppercase font-medium">Scroll</span>
-          <div className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1">
-            <div className="w-1 h-2 rounded-full bg-purple-400 animate-bounce" />
-          </div>
-        </div>
       </section>
 
       {/* ══════════════════════════════════════════
           MARQUEE TICKER
       ══════════════════════════════════════════ */}
-      <div className="py-5 border-y border-white/[0.06] bg-[#13131a]/50 overflow-hidden relative">
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0a0a0f] to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0a0a0f] to-transparent z-10" />
+      <div className="py-5 border-y border-white/[0.06] bg-[var(--bg-secondary)]/50 overflow-hidden relative">
+        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[var(--bg-primary)] to-transparent z-10" />
+        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[var(--bg-primary)] to-transparent z-10" />
         <div className="marquee-track">
           {[...tickerItems, ...tickerItems].map((item, i) => (
             <span key={i} className="ticker-tag mx-3">{item}</span>
@@ -172,26 +159,46 @@ const Home = () => {
       </div>
 
       {/* ══════════════════════════════════════════
+          ARTISTIC QUOTE
+      ══════════════════════════════════════════ */}
+      <section className="py-24 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-dot-pattern opacity-30" />
+        <div className="max-w-4xl mx-auto relative z-10 text-center reveal">
+          <div className="mb-8 flex justify-center">
+            <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+          </div>
+          <h2 className="text-3xl md:text-5xl font-display italic leading-relaxed text-[var(--text-primary)] mb-8">
+            "The purpose of art is washing the dust of daily life off our souls."
+          </h2>
+          <p className="text-lg text-[var(--text-muted)] font-semibold tracking-widest uppercase">
+            — Pablo Picasso
+          </p>
+        </div>
+      </section>
+
+      <div className="section-divider" />
+
+      {/* ══════════════════════════════════════════
           FEATURED ARTWORK
       ══════════════════════════════════════════ */}
       <section className="py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-14 text-center reveal">
-            <div className="section-label mb-4 justify-center">Curated for You</div>
+            <div className="section-label mb-4 justify-center">Curated Collection</div>
             <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
               Art worth <span className="gradient-text">discovering.</span>
             </h2>
-            <p className="text-[#a0a0b8] text-lg max-w-xl mx-auto">
-              Handpicked pieces from our most talented artists
+            <p className="text-[var(--text-muted)] text-lg max-w-xl mx-auto">
+              Handpicked pieces from our most talented independent artists across India
             </p>
           </div>
           <div className="reveal">
-            <ArtworkGrid artworks={sampleArtworks.slice(0, 8)} />
+            <ArtworkGrid artworks={sampleArtworks.slice(0, 12)} />
           </div>
           <div className="mt-12 text-center reveal">
             <Link to="/explore">
-              <button className="px-8 py-3.5 rounded-2xl font-semibold glass border border-white/12 hover:border-purple-500/40 text-[#f0f0f5] hover:text-white transition-all duration-300 btn-magnetic group">
-                View All Artwork <ArrowRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <button className="px-8 py-3.5 rounded-2xl font-semibold glass border border-white/12 hover:border-purple-500/40 text-[var(--text-primary)] hover:text-white transition-all duration-300 btn-magnetic group">
+                View Full Collection <ArrowRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
             </Link>
           </div>
@@ -215,43 +222,77 @@ const Home = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger-children">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
             {sampleCategories.slice(0, 9).map((category, idx) => {
               const Icon = catIcons[idx % catIcons.length];
-              const colors = [
-                'from-purple-600/30 to-purple-900/10',
-                'from-cyan-600/30 to-cyan-900/10',
-                'from-pink-600/30 to-pink-900/10',
-                'from-orange-600/30 to-orange-900/10',
-                'from-green-600/30 to-green-900/10',
-                'from-blue-600/30 to-blue-900/10',
-                'from-yellow-600/30 to-yellow-900/10',
-                'from-red-600/30 to-red-900/10',
-                'from-indigo-600/30 to-indigo-900/10',
+              const previewImg = categoryPreviewImages[category.slug] || categoryPreviewImages['digital-art'];
+              const catArtworkCount = sampleArtworks.filter(a => (a.category || '').toLowerCase() === category.name.toLowerCase()).length;
+              
+              const gradients = [
+                'from-violet-600/20 via-purple-600/10 to-transparent',
+                'from-amber-600/20 via-orange-600/10 to-transparent',
+                'from-emerald-600/20 via-teal-600/10 to-transparent',
+                'from-sky-600/20 via-blue-600/10 to-transparent',
+                'from-rose-600/20 via-pink-600/10 to-transparent',
+                'from-cyan-600/20 via-blue-600/10 to-transparent',
+                'from-orange-600/20 via-amber-600/10 to-transparent',
+                'from-lime-600/20 via-green-600/10 to-transparent',
+                'from-fuchsia-600/20 via-purple-600/10 to-transparent',
               ];
+
               const iconColors = [
-                'text-purple-400', 'text-cyan-400', 'text-pink-400',
-                'text-orange-400', 'text-green-400', 'text-blue-400',
-                'text-yellow-400', 'text-red-400', 'text-indigo-400',
+                'text-violet-600 bg-violet-500/10 border-violet-500/20',
+                'text-amber-600 bg-amber-500/10 border-amber-500/20',
+                'text-emerald-600 bg-emerald-500/10 border-emerald-500/20',
+                'text-sky-600 bg-sky-500/10 border-sky-500/20',
+                'text-rose-600 bg-rose-500/10 border-rose-500/20',
+                'text-cyan-600 bg-cyan-500/10 border-cyan-500/20',
+                'text-orange-600 bg-orange-500/10 border-orange-500/20',
+                'text-lime-600 bg-lime-500/10 border-lime-500/20',
+                'text-fuchsia-600 bg-fuchsia-500/10 border-fuchsia-500/20',
               ];
+
               return (
                 <Link
                   key={category.id}
-                  to={`/explore?category=${category.slug}`}
-                  className="group relative aspect-[4/3] overflow-hidden rounded-3xl glass border border-white/8 hover:border-white/20 card-glow-hover"
+                  to={`/category/${category.slug}`}
+                  className="group relative h-64 overflow-hidden rounded-3xl glass border border-[var(--border-subtle)] hover:border-purple-500/40 card-glow-hover transition-all duration-500 flex flex-col justify-between p-7"
                 >
-                  {/* Gradient fill */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${colors[idx % colors.length]} opacity-60 group-hover:opacity-100 transition-opacity duration-500`} />
-                  {/* Shimmer */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 shimmer-overlay" />
-
-                  <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-8 text-center">
-                    <div className={`w-16 h-16 rounded-2xl glass-strong flex items-center justify-center mb-5 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 ${iconColors[idx % iconColors.length]}`}>
-                      <Icon className="w-7 h-7" />
-                    </div>
-                    <h3 className="text-xl font-heading font-bold mb-2 group-hover:text-white transition-colors">{category.name}</h3>
-                    <p className="text-sm text-[#a0a0b8] group-hover:text-[#c0c0d8] transition-colors">Browse collection →</p>
+                  {/* Subtle Background Artwork Preview with Hover Zoom */}
+                  <div className="absolute inset-0 z-0 overflow-hidden">
+                    <img
+                      src={previewImg}
+                      alt={category.name}
+                      className="w-full h-full object-cover opacity-20 filter saturate-150 group-hover:scale-110 group-hover:opacity-30 transition-all duration-700 ease-out"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${gradients[idx % gradients.length]} mix-blend-multiply`} />
+                    <div className="absolute inset-0 bg-[var(--bg-primary)]/60 backdrop-blur-[2px]" />
                   </div>
+
+                  {/* Top Row: Icon + Count Badge */}
+                  <div className="relative z-10 flex items-center justify-between">
+                    <div className={`w-13 h-13 p-3.5 rounded-2xl border ${iconColors[idx % iconColors.length]} flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 shadow-md backdrop-blur-md`}>
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full glass border border-[var(--border-subtle)] text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors">
+                      {catArtworkCount} {catArtworkCount === 1 ? 'Piece' : 'Pieces'}
+                    </span>
+                  </div>
+
+                  {/* Bottom Content: Title + Explore CTA */}
+                  <div className="relative z-10">
+                    <h3 className="text-2xl font-heading font-extrabold mb-1 text-[var(--text-primary)] group-hover:text-purple-600 transition-colors">
+                      {category.name}
+                    </h3>
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors">
+                      <span>Explore Collection</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform text-purple-600" />
+                    </div>
+                  </div>
+
+                  {/* Shimmer sweep effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 shimmer-overlay pointer-events-none" />
                 </Link>
               );
             })}
@@ -303,7 +344,7 @@ const Home = () => {
           <div className="relative rounded-[2.5rem] overflow-hidden gradient-border">
             {/* Aurora background */}
             <div className="absolute inset-0 aurora-bg opacity-60" />
-            <div className="absolute inset-0 bg-[#13131a]/70 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-[var(--bg-secondary)]/70 backdrop-blur-sm" />
             {/* Grid overlay */}
             <div className="absolute inset-0 bg-grid opacity-20" />
 
@@ -341,7 +382,7 @@ const Home = () => {
                   Can't find exactly what<br />
                   <span className="gradient-text">you imagined?</span>
                 </h2>
-                <p className="text-[#a0a0b8] mb-8 text-lg leading-relaxed">
+                <p className="text-[var(--text-muted)] mb-8 text-lg leading-relaxed">
                   Tell an artist what you want. Get a piece created just for you — from personalized gifts to dream room décor.
                 </p>
                 <ul className="space-y-3 mb-10">
@@ -354,7 +395,7 @@ const Home = () => {
                 </ul>
                 <Link to="/custom-art" className="inline-block">
                   <button className="px-8 py-4 rounded-2xl font-semibold text-white relative overflow-hidden group btn-shimmer btn-magnetic">
-                    <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 group-hover:from-purple-500 group-hover:to-cyan-400 transition-all duration-300" />
+                    <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 group-hover:from-purple-500 group-hover:to-cyan-400 transition-all duration-300 pointer-events-none" />
                     <span className="relative flex items-center gap-2">
                       Request Custom Art
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -403,7 +444,7 @@ const Home = () => {
                     <step.icon className="w-7 h-7" />
                   </div>
                   <h3 className={`text-2xl font-heading font-bold mb-3 ${step.accent}`}>{step.title}</h3>
-                  <p className="text-[#a0a0b8] leading-relaxed">{step.desc}</p>
+                  <p className="text-[var(--text-muted)] leading-relaxed">{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -419,7 +460,7 @@ const Home = () => {
           <div className="relative rounded-[2.5rem] p-16 text-center overflow-hidden gradient-border reveal">
             {/* Aurora fill */}
             <div className="absolute inset-0 aurora-bg" />
-            <div className="absolute inset-0 bg-[#0a0a0f]/60 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-[var(--bg-primary)]/60 backdrop-blur-sm" />
             <div className="absolute inset-0 bg-grid opacity-15" />
 
             {/* Decorative orbs */}
@@ -432,19 +473,19 @@ const Home = () => {
                 Your walls deserve<br />
                 <span className="gradient-text">something original.</span>
               </h2>
-              <p className="text-xl text-[#a0a0b8] mb-12 max-w-2xl mx-auto">
+              <p className="text-xl text-[var(--text-muted)] mb-12 max-w-2xl mx-auto">
                 Join thousands of art lovers and artists already on Artvrkz.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link to="/explore">
                   <button className="px-10 py-4 rounded-2xl font-semibold text-white relative overflow-hidden group btn-shimmer btn-magnetic">
-                    <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 group-hover:from-purple-500 group-hover:to-cyan-400 transition-all duration-300" />
-                    <span className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-40 bg-gradient-to-r from-purple-600 to-cyan-500 transition-opacity" />
+                    <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 group-hover:from-purple-500 group-hover:to-cyan-400 transition-all duration-300 pointer-events-none" />
+                    <span className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-40 bg-gradient-to-r from-purple-600 to-cyan-500 transition-opacity pointer-events-none" />
                     <span className="relative">Explore Artwork</span>
                   </button>
                 </Link>
                 <Link to="/register?role=artist">
-                  <button className="px-10 py-4 rounded-2xl font-semibold text-[#f0f0f5] glass border border-white/15 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 btn-magnetic">
+                  <button className="px-10 py-4 rounded-2xl font-semibold text-[var(--text-primary)] glass border border-white/15 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 btn-magnetic">
                     Become an Artist
                   </button>
                 </Link>

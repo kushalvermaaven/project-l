@@ -84,7 +84,7 @@ const ArtistDashboard = () => {
               <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
               <XAxis dataKey="name" stroke="#6b6b80" />
               <YAxis stroke="#6b6b80" tickFormatter={(value) => `₹${value}`} />
-              <Tooltip contentStyle={{ backgroundColor: '#13131a', borderColor: '#ffffff10', borderRadius: '8px' }} itemStyle={{ color: '#8b5cf6' }} />
+              <Tooltip contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: '#ffffff10', borderRadius: '8px' }} itemStyle={{ color: '#8b5cf6' }} />
               <Area type="monotone" dataKey="revenue" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorRevenue)" />
             </AreaChart>
           </ResponsiveContainer>

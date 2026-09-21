@@ -28,6 +28,11 @@ import Login from './pages/auth/Login';
 import SignUp from './pages/auth/SignUp';
 import ForgotPassword from './pages/auth/ForgotPassword';
 
+// New Pages
+import AddArt from './pages/public/AddArt';
+import Collector from './pages/public/Collector';
+import CategoryPage from './pages/public/CategoryPage';
+
 // Buyer Dashboard Pages
 import BuyerDashboard from './pages/buyer/BuyerDashboard';
 import Favorites from './pages/buyer/Favorites';
@@ -61,7 +66,7 @@ function ProtectedRoute({ children, allowedRoles }) {
   
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0a0a0f]">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
         <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
@@ -107,6 +112,9 @@ function AppLayout() {
           <Route path="/services" element={<Services />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/add-art" element={<AddArt />} />
+          <Route path="/collector" element={<Collector />} />
+          <Route path="/category/:slug" element={<CategoryPage />} />
           
           {/* Auth Routes */}
           <Route path="/login" element={<Login />} />

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ShoppingCart, MessageCircle, Paintbrush, Heart, MapPin } from 'lucide-react';
+import { AuthContext } from '../../contexts/AuthContext';
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
-import Rating from '../../components/ui/Rating';
 import ArtistPreview from '../../components/artist/ArtistPreview';
 import ArtworkGrid from '../../components/artwork/ArtworkGrid';
 import { sampleArtworks, sampleArtists } from '../../data/sampleData';
@@ -13,6 +13,8 @@ import { FloatingDoodles, Mouse3DWrapper } from '../../components/ui/DoodleAnima
 
 const ArtworkDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext) || {};
   const rawArtwork = sampleArtworks.find(a => a.id === id) || sampleArtworks[0];
   const [isFavorite, setIsFavorite] = useState(false);
   useScrollReveal();
@@ -43,7 +45,7 @@ const ArtworkDetail = () => {
     .slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-[#f0f0f5] py-24 px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] py-24 px-6 relative overflow-hidden">
       <FloatingDoodles />
       {/* Background decorations */}
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
@@ -83,7 +85,7 @@ const ArtworkDetail = () => {
                 <img src={artwork.artist.avatar} alt={artwork.artist.name} className="w-14 h-14 rounded-full border-2 border-purple-500/30 group-hover:border-purple-400 transition-colors" />
                 <div>
                   <h3 className="font-heading font-bold group-hover:text-purple-400 transition-colors text-lg">{artwork.artist.name}</h3>
-                  <Rating value={4.8} count={124} />
+                  <span className="text-sm text-[var(--text-muted)]">View Artist Profile</span>
                 </div>
               </Link>
 
@@ -92,34 +94,44 @@ const ArtworkDetail = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-y-5 text-sm mb-8 pb-8 border-b border-white/10">
-                <div className="text-[#a0a0b8] font-medium">Medium</div>
+                <div className="text-[var(--text-muted)] font-medium">Medium</div>
                 <div className="font-medium text-right text-white">{artwork.medium || 'Oil on Canvas'}</div>
                 
-                <div className="text-[#a0a0b8] font-medium">Dimensions</div>
+                <div className="text-[var(--text-muted)] font-medium">Dimensions</div>
                 <div className="font-medium text-right text-white">{artwork.dimensions || '24" x 36"'}</div>
                 
-                <div className="text-[#a0a0b8] font-medium">Orientation</div>
+                <div className="text-[var(--text-muted)] font-medium">Orientation</div>
                 <div className="font-medium text-right text-white">{artwork.orientation || 'Portrait'}</div>
                 
-                <div className="text-[#a0a0b8] font-medium">Availability</div>
+                <div className="text-[var(--text-muted)] font-medium">Availability</div>
                 <div className="font-medium text-right text-green-400 flex items-center justify-end gap-1"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>In Stock</div>
                 
-                <div className="text-[#a0a0b8] font-medium">Customizable</div>
+                <div className="text-[var(--text-muted)] font-medium">Customizable</div>
                 <div className="font-medium text-right text-white">{artwork.customizable ? 'Yes' : 'No'}</div>
               </div>
 
               <div className="mb-8">
                 <h4 className="font-heading font-bold mb-3 text-lg">Description</h4>
-                <p className="text-[#a0a0b8] text-sm leading-relaxed">
+                <p className="text-[var(--text-muted)] text-sm leading-relaxed">
                   {artwork.description || 'A beautiful original piece created with passion and dedication. Perfect for enhancing any living space or office environment.'}
                 </p>
               </div>
 
               <div className="space-y-4">
-                <button className="w-full py-4 rounded-2xl font-semibold text-white relative overflow-hidden group btn-shimmer btn-magnetic flex items-center justify-center gap-2">
+                <button 
+                  onClick={() => {
+                    if (!user) {
+                      navigate('/signup?role=buyer');
+                    } else {
+                      navigate('/dashboard');
+                      // In a real app this would go to a checkout page
+                    }
+                  }}
+                  className="w-full py-4 rounded-2xl font-semibold text-white relative overflow-hidden group btn-shimmer btn-magnetic flex items-center justify-center gap-2"
+                >
                   <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 transition-all duration-300 group-hover:from-purple-500 group-hover:to-cyan-400" />
                   <span className="relative flex items-center gap-2">
-                    <ShoppingCart className="w-5 h-5" /> Buy Artwork
+                    <ShoppingCart className="w-5 h-5" /> {user ? 'Buy Artwork' : 'Sign in as Collector to Buy'}
                   </span>
                 </button>
                 <div className="flex gap-3">

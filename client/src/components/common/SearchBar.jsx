@@ -56,7 +56,7 @@ const SearchBar = ({ placeholder = "Search Artvrkz...", className = '' }) => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={placeholder}
-          className={`bg-transparent border-none outline-none text-[#f0f0f5] placeholder:text-[#6b6b80] ml-3 transition-all duration-300 ${isExpanded ? 'w-full opacity-100' : 'w-0 md:w-full opacity-0 md:opacity-100'}`}
+          className={`bg-transparent border-none outline-none text-[var(--text-primary)] placeholder:text-[#6b6b80] ml-3 transition-all duration-300 ${isExpanded ? 'w-full opacity-100' : 'w-0 md:w-full opacity-0 md:opacity-100'}`}
           onFocus={() => {
             setIsExpanded(true);
             if (query.trim().length > 1) setIsOpen(true);
@@ -68,7 +68,7 @@ const SearchBar = ({ placeholder = "Search Artvrkz...", className = '' }) => {
       </div>
 
       {isOpen && (results.artworks.length > 0 || results.artists.length > 0 || results.categories.length > 0) && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-[#1a1a2e]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-2 z-50 max-h-96 overflow-y-auto">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-[var(--bg-tertiary)]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-2 z-50 max-h-96 overflow-y-auto">
           
           {results.artworks.length > 0 && (
             <div className="mb-2">
@@ -79,8 +79,8 @@ const SearchBar = ({ placeholder = "Search Artvrkz...", className = '' }) => {
                 <div key={`art-${art.id}`} onClick={() => handleResultClick(`/artwork/${art.id}`)} className="flex items-center gap-3 p-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
                   <img src={art.images?.[0] || art.image} alt={art.title} className="w-10 h-10 rounded-lg object-cover" />
                   <div>
-                    <p className="text-sm font-medium text-[#f0f0f5]">{art.title}</p>
-                    <p className="text-xs text-[#a0a0b8]">{art.artist_name}</p>
+                    <p className="text-sm font-medium text-[var(--text-primary)]">{art.title}</p>
+                    <p className="text-xs text-[var(--text-muted)]">{art.artist_name}</p>
                   </div>
                 </div>
               ))}
@@ -96,7 +96,7 @@ const SearchBar = ({ placeholder = "Search Artvrkz...", className = '' }) => {
                 <div key={`artist-${artist.id}`} onClick={() => handleResultClick(`/artist/${artist.id}`)} className="flex items-center gap-3 p-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
                   <img src={artist.avatar || `https://ui-avatars.com/api/?name=${artist.name}`} alt={artist.name} className="w-10 h-10 rounded-full object-cover" />
                   <div>
-                    <p className="text-sm font-medium text-[#f0f0f5]">{artist.name}</p>
+                    <p className="text-sm font-medium text-[var(--text-primary)]">{artist.name}</p>
                     <p className="text-xs text-purple-400">{artist.art_style}</p>
                   </div>
                 </div>
@@ -112,9 +112,9 @@ const SearchBar = ({ placeholder = "Search Artvrkz...", className = '' }) => {
               {results.categories.map(cat => (
                 <div key={`cat-${cat.id || cat.name}`} onClick={() => handleResultClick(`/explore?category=${cat.slug || cat.value || cat.name}`)} className="flex items-center gap-3 p-2 hover:bg-white/5 rounded-xl cursor-pointer transition-colors">
                   <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">
-                    <Tag className="w-4 h-4 text-[#a0a0b8]" />
+                    <Tag className="w-4 h-4 text-[var(--text-muted)]" />
                   </div>
-                  <p className="text-sm font-medium text-[#f0f0f5]">{cat.label || cat.name}</p>
+                  <p className="text-sm font-medium text-[var(--text-primary)]">{cat.label || cat.name}</p>
                 </div>
               ))}
             </div>

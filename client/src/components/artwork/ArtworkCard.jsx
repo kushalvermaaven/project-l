@@ -11,7 +11,7 @@ const ArtworkCard = ({ artwork, className = '' }) => {
   if (!artwork) return null;
 
   return (
-    <div className={`group relative rounded-2xl overflow-hidden bg-[#13131a] border border-white/[0.07] transition-all duration-500 card-glow-hover ${className}`}>
+    <div className={`group relative rounded-2xl overflow-hidden bg-[var(--bg-secondary)] border border-white/[0.07] transition-all duration-500 card-glow-hover ${className}`}>
 
       {/* Image container */}
       <div className="aspect-[4/3] overflow-hidden relative img-zoom-container">
@@ -75,7 +75,7 @@ const ArtworkCard = ({ artwork, className = '' }) => {
       {/* Card body */}
       <div className="p-4">
         <Link to={`/artwork/${artwork.id}`} className="block group/title">
-          <h3 className="font-heading font-semibold text-[#f0f0f5] truncate group-hover/title:text-purple-300 transition-colors duration-300 text-[0.95rem]">
+          <h3 className="font-heading font-semibold text-[var(--text-primary)] truncate group-hover/title:text-purple-300 transition-colors duration-300 text-[0.95rem]">
             {artwork.title}
           </h3>
         </Link>
@@ -83,15 +83,11 @@ const ArtworkCard = ({ artwork, className = '' }) => {
         <div className="flex items-center justify-between mt-1.5">
           <Link
             to={`/artist/${artwork.artist_id}`}
-            className="text-sm text-[#6b6b80] hover:text-[#a0a0b8] transition-colors flex items-center gap-1.5 group/artist"
+            className="text-sm text-[#6b6b80] hover:text-[var(--text-muted)] transition-colors flex items-center gap-1.5 group/artist"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-purple-500/60 group-hover/artist:bg-purple-400 transition-colors" />
             {artwork.artist_name}
           </Link>
-          <div className="flex items-center gap-1 text-xs text-[#6b6b80]">
-            <Heart className="w-3 h-3" />
-            <span>{artwork.likes_count || 0}</span>
-          </div>
         </div>
 
         {/* Divider */}

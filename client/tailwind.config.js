@@ -16,23 +16,23 @@ export default {
           500: '#303055',
         },
         purple: {
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#8b5cf6',
-          700: '#7c3aed',
-          800: '#6d28d9',
+          400: '#8a2be2', // Violet
+          500: '#6a0dad', // Purple
+          600: '#4b0082', // Indigo/Deep Violet
+          700: '#3a0066',
+          800: '#2a004d',
         },
         cyan: {
-          400: '#22d3ee',
-          500: '#06b6d4',
-          600: '#0891b2',
+          400: '#1e90ff', // Dodger Blue
+          500: '#008b8b', // Teal
+          600: '#006666',
         },
         neon: {
-          cyan: '#06b6d4',
-          cyanLight: '#22d3ee',
-          pink: '#ec4899',
-          orange: '#f97316',
-          green: '#10b981',
+          cyan: '#008b8b',
+          cyanLight: '#1e90ff',
+          pink: '#c71585', // Magenta
+          orange: '#ff4500', // Orange Red
+          green: '#ffd700', // Yellow (from logo)
         }
       },
       fontFamily: {
@@ -43,18 +43,18 @@ export default {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'hero-gradient': 'linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.1), rgba(236,72,153,0.15))',
+        'hero-gradient': 'linear-gradient(135deg, rgba(75,0,130,0.2), rgba(0,139,139,0.1), rgba(199,21,133,0.15))',
         'card-gradient': 'linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))',
         'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
       },
       boxShadow: {
-        'neon-purple': '0 0 20px rgba(124,58,237,0.5), 0 0 60px rgba(124,58,237,0.2)',
-        'neon-cyan': '0 0 20px rgba(6,182,212,0.5), 0 0 60px rgba(6,182,212,0.2)',
-        'neon-pink': '0 0 20px rgba(236,72,153,0.5), 0 0 60px rgba(236,72,153,0.2)',
-        'card': '0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)',
-        'card-hover': '0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(124,58,237,0.15)',
-        'glass': '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
-        'inner-glow': 'inset 0 0 30px rgba(124,58,237,0.1)',
+        'neon-purple': '0 0 20px rgba(75,0,130,0.5), 0 0 60px rgba(75,0,130,0.2)',
+        'neon-cyan': '0 0 20px rgba(0,139,139,0.5), 0 0 60px rgba(0,139,139,0.2)',
+        'neon-pink': '0 0 20px rgba(199,21,133,0.5), 0 0 60px rgba(199,21,133,0.2)',
+        'card': '0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05)',
+        'card-hover': '0 20px 60px rgba(0,0,0,0.15), 0 0 40px rgba(75,0,130,0.1)',
+        'glass': '0 8px 32px rgba(0,0,0,0.05), inset 0 1px 0 rgba(0,0,0,0.02)',
+        'inner-glow': 'inset 0 0 30px rgba(75,0,130,0.1)',
       },
       animation: {
         float:        'float 4s ease-in-out infinite',

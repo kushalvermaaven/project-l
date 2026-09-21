@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import ArtworkFilters from '../../components/artwork/ArtworkFilters';
 import ArtworkGrid from '../../components/artwork/ArtworkGrid';
-import { sampleArtworks } from '../../data/sampleData';
+import { sampleArtworks, sampleCategories } from '../../data/sampleData';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { FloatingDoodles, ParallaxSection } from '../../components/ui/DoodleAnimations';
 
@@ -18,9 +19,32 @@ const defaultFilters = {
 };
 
 const Explore = () => {
-  const [filters, setFilters] = useState(defaultFilters);
-  const [filteredArtworks, setFilteredArtworks] = useState(sampleArtworks);
+  const [searchParams] = useSearchParams();
+  const categoryParam = searchParams.get('category');
+
+  const [filters, setFilters] = useState(() => {
+    if (!categoryParam) return defaultFilters;
+    const match = sampleCategories.find(c => c.slug === categoryParam || c.name.toLowerCase() === categoryParam.toLowerCase());
+    return { ...defaultFilters, category: match ? match.name : categoryParam };
+  });
+
+  const [filteredArtworks, setFilteredArtworks] = useState(() => {
+    if (!categoryParam) return sampleArtworks;
+    const match = sampleCategories.find(c => c.slug === categoryParam || c.name.toLowerCase() === categoryParam.toLowerCase());
+    const catName = match ? match.name : categoryParam;
+    return sampleArtworks.filter(a => (a.category || '').toLowerCase() === catName.toLowerCase());
+  });
+
   useScrollReveal();
+
+  useEffect(() => {
+    if (categoryParam) {
+      const match = sampleCategories.find(c => c.slug === categoryParam || c.name.toLowerCase() === categoryParam.toLowerCase());
+      const catName = match ? match.name : categoryParam;
+      setFilters(prev => ({ ...prev, category: catName }));
+      setFilteredArtworks(sampleArtworks.filter(a => (a.category || '').toLowerCase() === catName.toLowerCase()));
+    }
+  }, [categoryParam]);
 
   const applyFilters = (newFilters) => {
     let result = [...sampleArtworks];
@@ -71,8 +95,7 @@ const Explore = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-[#f0f0f5]">
-      <FloatingDoodles />
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
       {/* Hero header */}
       <div className="relative py-28 px-6 overflow-hidden border-b border-white/[0.06]">
         <div className="absolute inset-0 bg-grid opacity-30" />
@@ -84,7 +107,7 @@ const Explore = () => {
           <h1 className="text-5xl md:text-6xl font-heading font-bold mb-3">
             Explore <span className="gradient-text">Art</span>
           </h1>
-          <p className="text-[#a0a0b8] text-lg">
+          <p className="text-[var(--text-muted)] text-lg">
             Showing <span className="text-white font-semibold">{filteredArtworks.length}</span> artworks
           </p>
         </ParallaxSection>
@@ -110,7 +133,7 @@ const Explore = () => {
             ) : (
               <div className="text-center py-28 rounded-3xl glass border border-white/8 flex flex-col items-center gap-4">
                 <div className="w-16 h-16 rounded-2xl glass-strong border border-white/10 flex items-center justify-center text-3xl">🎨</div>
-                <p className="text-[#a0a0b8] text-lg font-medium">No artworks found matching your criteria.</p>
+                <p className="text-[var(--text-muted)] text-lg font-medium">No artworks found matching your criteria.</p>
                 <button onClick={handleReset} className="px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 transition-all btn-magnetic">
                   Clear Filters
                 </button>

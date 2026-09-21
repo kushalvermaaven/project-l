@@ -25,10 +25,10 @@ export default function BuyerDashboard() {
         
         {/* Welcome Section */}
         <section>
-          <h1 className="text-3xl md:text-4xl font-heading font-bold text-[#f0f0f5] mb-2">
-            Welcome back, {user?.name || 'Art Lover'}!
+          <h1 className="text-3xl md:text-4xl font-heading font-bold text-[var(--text-primary)] mb-2">
+            Welcome back, {user?.name || 'Collector'}!
           </h1>
-          <p className="text-[#a0a0b8]">{today} • Here's what's happening with your art journey.</p>
+          <p className="text-[var(--text-muted)]">{today} • Here's what's happening with your art journey.</p>
         </section>
 
         {/* Stats Row */}
@@ -39,8 +39,8 @@ export default function BuyerDashboard() {
                 {stat.icon}
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#f0f0f5]">{stat.value}</div>
-                <div className="text-sm text-[#a0a0b8]">{stat.label}</div>
+                <div className="text-3xl font-bold text-[var(--text-primary)]">{stat.value}</div>
+                <div className="text-sm text-[var(--text-muted)]">{stat.label}</div>
               </div>
             </div>
           ))}
@@ -49,7 +49,7 @@ export default function BuyerDashboard() {
         {/* Recommended Artwork */}
         <section>
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-heading font-bold text-[#f0f0f5] flex items-center gap-2">
+            <h2 className="text-2xl font-heading font-bold text-[var(--text-primary)] flex items-center gap-2">
               <Sparkles className="w-6 h-6 text-purple-400" /> Recommended for you
             </h2>
             <Link to="/explore" className="text-sm text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
@@ -67,7 +67,7 @@ export default function BuyerDashboard() {
           {/* Recent Orders */}
           <section className="p-6 rounded-2xl bg-white/5 border border-white/10">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-heading font-bold text-[#f0f0f5]">Recent Orders</h2>
+              <h2 className="text-xl font-heading font-bold text-[var(--text-primary)]">Recent Orders</h2>
               <Link to="/dashboard/orders" className="text-sm text-purple-400 hover:text-purple-300">View All</Link>
             </div>
             
@@ -83,12 +83,12 @@ export default function BuyerDashboard() {
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-medium text-[#f0f0f5] truncate">{order.artwork?.title || 'Artwork'}</h4>
-                      <p className="text-sm text-[#a0a0b8] truncate">{order.artist?.name || 'Artist'}</p>
+                      <h4 className="font-medium text-[var(--text-primary)] truncate">{order.artwork?.title || 'Artwork'}</h4>
+                      <p className="text-sm text-[var(--text-muted)] truncate">{order.artist?.name || 'Artist'}</p>
                       <p className="text-xs text-[#6b6b80] mt-1">{formatDate(order.date)}</p>
                     </div>
                     <div className="text-right">
-                      <div className="font-bold text-[#f0f0f5]">{formatPrice(order.totalAmount)}</div>
+                      <div className="font-bold text-[var(--text-primary)]">{formatPrice(order.totalAmount)}</div>
                       <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs bg-purple-500/20 text-purple-300 border border-purple-500/30">
                         {order.status}
                       </span>
@@ -104,7 +104,7 @@ export default function BuyerDashboard() {
           {/* Custom Requests */}
           <section className="p-6 rounded-2xl bg-white/5 border border-white/10">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-heading font-bold text-[#f0f0f5]">Your Custom Requests</h2>
+              <h2 className="text-xl font-heading font-bold text-[var(--text-primary)]">Your Custom Requests</h2>
               <Link to="/dashboard/requests" className="text-sm text-purple-400 hover:text-purple-300">View All</Link>
             </div>
 
@@ -113,12 +113,12 @@ export default function BuyerDashboard() {
                 {sampleCustomRequests.slice(0, 3).map(req => (
                   <div key={req.id} className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-medium text-[#f0f0f5] truncate max-w-[70%]">{req.title || 'Custom Project'}</h4>
+                      <h4 className="font-medium text-[var(--text-primary)] truncate max-w-[70%]">{req.title || 'Custom Project'}</h4>
                       <span className="px-2 py-0.5 rounded-full text-xs bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
                         {req.status}
                       </span>
                     </div>
-                    <p className="text-sm text-[#a0a0b8] line-clamp-2 mb-3">{req.description}</p>
+                    <p className="text-sm text-[var(--text-muted)] line-clamp-2 mb-3">{req.description}</p>
                     <div className="flex justify-between items-center text-xs text-[#6b6b80]">
                       <span>{req.artist?.name ? `Artist: ${req.artist.name}` : 'Finding artist...'}</span>
                       <span>Budget: {req.budget}</span>
@@ -135,7 +135,7 @@ export default function BuyerDashboard() {
         {/* Followed Artists */}
         <section>
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-heading font-bold text-[#f0f0f5]">Artists you follow</h2>
+            <h2 className="text-xl font-heading font-bold text-[var(--text-primary)]">Artists you follow</h2>
             <Link to="/artists" className="text-sm text-purple-400 hover:text-purple-300">See All</Link>
           </div>
           <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
@@ -148,7 +148,7 @@ export default function BuyerDashboard() {
                     <User className="w-full h-full p-4 text-gray-500" />
                   )}
                 </div>
-                <span className="text-sm font-medium text-[#f0f0f5] text-center line-clamp-1">{artist.name}</span>
+                <span className="text-sm font-medium text-[var(--text-primary)] text-center line-clamp-1">{artist.name}</span>
               </Link>
             ))}
           </div>

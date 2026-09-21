@@ -31,7 +31,7 @@ const socials = [
 
 const Footer = () => {
   return (
-    <footer className="relative border-t border-white/[0.06] bg-[#0a0a0f] overflow-hidden">
+    <footer className="relative border-t border-white/[0.06] bg-[var(--bg-primary)] overflow-hidden">
       {/* Subtle aurora top */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
       <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full pointer-events-none"
@@ -48,16 +48,10 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2.5 mb-5 group w-fit">
-              <div className="relative">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center shadow-neon-purple group-hover:shadow-neon-cyan transition-all duration-500">
-                  <Sparkles className="w-4 h-4 text-white" />
-                </div>
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-purple-600 to-cyan-500 blur-md opacity-30 group-hover:opacity-60 transition-opacity" />
-              </div>
-              <span className="text-xl font-heading font-bold gradient-text">ARTVRKZ</span>
+              <img src="/logo.jpg" alt="Artvrkz Logo" className="h-12 w-auto object-contain rounded-md" />
             </Link>
             <p className="text-[#6b6b80] text-sm leading-relaxed mb-6 max-w-xs">
-              The world's most vibrant digital art marketplace. Discover, collect, and commission original artwork from independent artists worldwide.
+              The world's most vibrant art marketplace. Discover, collect, and commission original artwork from independent artists worldwide.
             </p>
             {/* Social icons */}
             <div className="flex items-center gap-3">
@@ -77,13 +71,13 @@ const Footer = () => {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="text-xs font-bold tracking-widest uppercase text-[#a0a0b8] mb-5">{title}</h4>
+              <h4 className="text-xs font-bold tracking-widest uppercase text-[var(--text-muted)] mb-5">{title}</h4>
               <ul className="space-y-3">
                 {links.map(({ label, to }) => (
                   <li key={label}>
                     <Link
                       to={to}
-                      className="text-sm text-[#6b6b80] hover:text-[#f0f0f5] transition-colors duration-300 hover-underline"
+                      className="text-sm text-[#6b6b80] hover:text-[var(--text-primary)] transition-colors duration-300 hover-underline"
                     >
                       {label}
                     </Link>
@@ -106,11 +100,11 @@ const Footer = () => {
             Made with <Heart className="w-3 h-3 text-pink-500 fill-pink-500" /> for artists everywhere.
           </p>
           <div className="flex items-center gap-4 text-xs text-[#4a4a60]">
-            <a href="#" className="hover:text-[#a0a0b8] transition-colors">Privacy</a>
+            <a href="#" className="hover:text-[var(--text-muted)] transition-colors">Privacy</a>
             <span>·</span>
-            <a href="#" className="hover:text-[#a0a0b8] transition-colors">Terms</a>
+            <a href="#" className="hover:text-[var(--text-muted)] transition-colors">Terms</a>
             <span>·</span>
-            <a href="#" className="hover:text-[#a0a0b8] transition-colors">Cookies</a>
+            <a href="#" className="hover:text-[var(--text-muted)] transition-colors">Cookies</a>
           </div>
         </div>
       </div>

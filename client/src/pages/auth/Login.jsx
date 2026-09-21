@@ -20,9 +20,13 @@ export default function Login() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      if (auth?.login) await auth.login(email, password);
+      let userRole = 'buyer';
+      if (auth?.login) {
+        const u = await auth.login(email, password);
+        if (u) userRole = u.role;
+      }
       toast?.showToast?.('Logged in successfully', 'success');
-      navigate('/dashboard');
+      navigate(userRole === 'artist' ? '/artist-dashboard' : '/dashboard');
     } catch (error) {
       toast?.showToast?.(error.message || 'Failed to login', 'error');
     } finally {
@@ -31,25 +35,25 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex bg-[#0a0a0f] text-[#f0f0f5]">
+    <div className="min-h-screen flex bg-[var(--bg-primary)] text-[var(--text-primary)]">
       {/* Left Panel */}
-      <div className="hidden lg:flex flex-1 flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[#13131a] to-[#1a1a2e] border-r border-white/10 p-12">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-purple-900/20 via-[#0a0a0f]/0 to-cyan-900/20"></div>
+      <div className="hidden lg:flex flex-1 flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-tertiary)] border-r border-white/10 p-12">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-purple-900/20 via-[var(--bg-primary)]/0 to-cyan-900/20"></div>
         
         <div className="z-10 text-center max-w-md">
           <h1 className="text-5xl font-heading font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-400">
             ARTVRKZ
           </h1>
-          <p className="text-xl text-[#a0a0b8] mb-8">
+          <p className="text-xl text-[var(--text-muted)] mb-8">
             Discover art. Connect with artists. Make it yours.
           </p>
           <div className="flex gap-8 justify-center mt-12 text-[#6b6b80]">
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#f0f0f5]">10k+</div>
+              <div className="text-3xl font-bold text-[var(--text-primary)]">10k+</div>
               <div className="text-sm mt-1">Artworks</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#f0f0f5]">5k+</div>
+              <div className="text-3xl font-bold text-[var(--text-primary)]">5k+</div>
               <div className="text-sm mt-1">Artists</div>
             </div>
           </div>
@@ -60,8 +64,8 @@ export default function Login() {
       <div className="flex-1 flex flex-col justify-center items-center p-6 sm:p-12">
         <div className="w-full max-w-md p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-heading font-bold text-[#f0f0f5] mb-2">Welcome back</h2>
-            <p className="text-[#a0a0b8]">Sign in to your Artvrkz account</p>
+            <h2 className="text-3xl font-heading font-bold text-[var(--text-primary)] mb-2">Welcome back</h2>
+            <p className="text-[var(--text-muted)]">Sign in to your Artvrkz account</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -73,7 +77,7 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email address"
-                  className="w-full bg-[#13131a] border border-white/10 rounded-xl py-3 pl-10 pr-4 text-[#f0f0f5] placeholder:text-[#6b6b80] focus:outline-none focus:border-purple-500 transition-colors"
+                  className="w-full bg-[var(--bg-secondary)] border border-white/10 rounded-xl py-3 pl-10 pr-4 text-[var(--text-primary)] placeholder:text-[#6b6b80] focus:outline-none focus:border-purple-500 transition-colors"
                   required
                 />
               </div>
@@ -87,13 +91,13 @@ export default function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
-                  className="w-full bg-[#13131a] border border-white/10 rounded-xl py-3 pl-10 pr-12 text-[#f0f0f5] placeholder:text-[#6b6b80] focus:outline-none focus:border-purple-500 transition-colors"
+                  className="w-full bg-[var(--bg-secondary)] border border-white/10 rounded-xl py-3 pl-10 pr-12 text-[var(--text-primary)] placeholder:text-[#6b6b80] focus:outline-none focus:border-purple-500 transition-colors"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6b6b80] hover:text-[#f0f0f5] transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6b6b80] hover:text-[var(--text-primary)] transition-colors"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -102,8 +106,8 @@ export default function Login() {
 
             <div className="flex items-center justify-between text-sm">
               <label className="flex items-center gap-2 cursor-pointer group">
-                <input type="checkbox" className="w-4 h-4 rounded border-white/10 bg-[#13131a] text-purple-600 focus:ring-purple-500 focus:ring-offset-[#0a0a0f]" />
-                <span className="text-[#a0a0b8] group-hover:text-[#f0f0f5] transition-colors">Remember me</span>
+                <input type="checkbox" className="w-4 h-4 rounded border-white/10 bg-[var(--bg-secondary)] text-purple-600 focus:ring-purple-500 focus:ring-offset-[var(--bg-primary)]" />
+                <span className="text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors">Remember me</span>
               </label>
               <Link to="/forgot-password" className="text-cyan-400 hover:text-cyan-300 transition-colors">
                 Forgot password?
@@ -125,12 +129,12 @@ export default function Login() {
             <div className="flex-1 h-px bg-white/10"></div>
           </div>
 
-          <button className="mt-6 w-full py-3 px-4 bg-transparent border border-white/10 hover:bg-white/5 text-[#f0f0f5] font-medium rounded-xl flex items-center justify-center gap-2 transition-all">
+          <button className="mt-6 w-full py-3 px-4 bg-transparent border border-white/10 hover:bg-white/5 text-[var(--text-primary)] font-medium rounded-xl flex items-center justify-center gap-2 transition-all">
             <Chrome className="w-5 h-5" />
             Google
           </button>
 
-          <p className="mt-8 text-center text-[#a0a0b8] text-sm">
+          <p className="mt-8 text-center text-[var(--text-muted)] text-sm">
             Don't have an account?{' '}
             <Link to="/signup" className="text-purple-400 hover:text-purple-300 transition-colors font-medium">
               Sign up

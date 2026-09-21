@@ -52,7 +52,7 @@ const Rating = ({
         })}
       </div>
       {showValue && (
-        <span className="text-sm font-medium text-[#f0f0f5] ml-1">
+        <span className="text-sm font-medium text-[var(--text-primary)] ml-1">
           {Number(value).toFixed(1)}
         </span>
       )}

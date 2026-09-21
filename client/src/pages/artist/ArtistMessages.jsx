@@ -55,7 +55,7 @@ const ArtistMessages = () => {
         </div>
 
         {/* Chat Area */}
-        <div className="hidden md:flex flex-1 flex-col bg-[#13131a]">
+        <div className="hidden md:flex flex-1 flex-col bg-[var(--bg-secondary)]">
           {/* Chat Header */}
           <div className="p-4 border-b border-white/10 flex justify-between items-center bg-white/5">
             <div className="flex items-center gap-3">

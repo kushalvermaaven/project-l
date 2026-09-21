@@ -49,15 +49,10 @@ const Sidebar = ({ role = 'buyer', onClose }) => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#13131a] border-r border-white/10 w-64 overflow-y-auto">
+    <div className="flex flex-col h-full bg-[var(--bg-secondary)] border-r border-white/10 w-64 overflow-y-auto">
       <div className="p-6">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center">
-            <span className="text-white font-bold text-xl leading-none">A</span>
-          </div>
-          <span className="text-xl font-heading font-bold bg-gradient-to-r from-white to-[#a0a0b8] bg-clip-text text-transparent">
-            ARTVRKZ
-          </span>
+          <img src="/logo.jpg" alt="Artvrkz Logo" className="h-10 w-auto object-contain rounded-md" />
         </Link>
       </div>
 
@@ -68,7 +63,7 @@ const Sidebar = ({ role = 'buyer', onClose }) => {
           className="w-10 h-10 rounded-full object-cover border border-purple-500/30"
         />
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-[#f0f0f5] truncate">{user?.name || 'User'}</p>
+          <p className="text-sm font-medium text-[var(--text-primary)] truncate">{user?.name || 'User'}</p>
           <span className="text-[10px] uppercase tracking-wider text-purple-400 font-medium px-2 py-0.5 rounded-full bg-purple-500/10 inline-block mt-0.5">
             {role}
           </span>
@@ -88,7 +83,7 @@ const Sidebar = ({ role = 'buyer', onClose }) => {
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 ${
                 isActive 
                   ? 'bg-gradient-to-r from-purple-600/20 to-cyan-600/20 text-white border-r-2 border-purple-500' 
-                  : 'text-[#a0a0b8] hover:text-white hover:bg-white/5 border-r-2 border-transparent'
+                  : 'text-[var(--text-muted)] hover:text-white hover:bg-white/5 border-r-2 border-transparent'
               }`}
             >
               <Icon className={`w-5 h-5 ${isActive ? 'text-purple-400' : ''}`} />
@@ -101,7 +96,7 @@ const Sidebar = ({ role = 'buyer', onClose }) => {
       <div className="p-4 mt-auto border-t border-white/10">
         <button 
           onClick={handleLogout}
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#a0a0b8] hover:text-red-400 hover:bg-red-500/10 transition-all duration-200 w-full"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[var(--text-muted)] hover:text-red-400 hover:bg-red-500/10 transition-all duration-200 w-full"
         >
           <LogOut className="w-5 h-5" />
           <span className="font-medium text-sm">Logout</span>

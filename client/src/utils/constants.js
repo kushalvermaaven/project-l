@@ -1,5 +1,6 @@
 export const CATEGORIES = [
-  { id: 'digital-art', name: 'Digital Art', slug: 'digital-art', icon: 'Palette', description: 'Art created using digital tools' },
+  { id: 'digital-art', name: 'Digital Art', slug: 'digital-art', icon: 'Monitor', description: 'Digital and generative artwork' },
+  { id: 'originals', name: 'Originals', slug: 'originals', icon: 'Star', description: 'Original, one-of-a-kind physical art' },
   { id: 'paintings', name: 'Paintings', slug: 'paintings', icon: 'Paintbrush', description: 'Traditional and modern painting techniques' },
   { id: 'illustrations', name: 'Illustrations', slug: 'illustrations', icon: 'PenTool', description: 'Hand-drawn and digital illustrations' },
   { id: 'photography', name: 'Photography', slug: 'photography', icon: 'Camera', description: 'Fine art and creative photography' },
@@ -21,7 +22,7 @@ export const ORDER_STATUSES = {
 };
 
 export const ART_STYLES = [
-  'Digital Art', 'Abstract', 'Realism', 'Impressionism', 'Minimalist',
+  'Abstract', 'Realism', 'Impressionism', 'Minimalist',
   'Pop Art', 'Surrealism', 'Contemporary', 'Traditional', 'Modern',
   'Expressionism', 'Cubism', 'Street Art', 'Fantasy', 'Conceptual'
 ];
